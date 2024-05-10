@@ -1,5 +1,6 @@
 import { addUser, getUserbyEmail, updateUserDetails, deleteUser, showAllUser } from "./controllers/UserController.js"
 import { addNewProduct, getProductByID, updateProductDetails, deleteProduct, showAllProducts } from "./controllers/ProductController.js"
+import { addOrder, getOrderByTransactionId, updateOrder, deleteOrder, showAllOrderFromAUser, showAllOrders } from "./controllers/OrderController.js";
 
 //sends the function logic from controller to the server
 
@@ -19,7 +20,14 @@ const router = (app) => {
     app.post('/delete-product', deleteProduct);
     app.post('/show-all-product', showAllProducts);
 
+
     //order
+    app.post('/add-order', addOrder);
+    app.post('/get-order-by-transaction-id', getOrderByTransactionId);
+    app.post('/update-order', updateOrder);
+    app.post('/delete-order', deleteOrder);
+    app.post('/show-orders-of-user', showAllOrderFromAUser);
+    app.post('/show-all-orders', showAllOrders); 
     
 }
 

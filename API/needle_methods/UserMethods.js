@@ -1,5 +1,7 @@
 import needle from "needle";
 
+const baseURL = 'http://localhost:3001'
+
 async function AddUser(userData) {
     try {
         const response = await needle('post', `${baseURL}/add-user`, userData);

@@ -1,5 +1,7 @@
 import needle from "needle";
 
+const baseURL = 'http://localhost:3001'
+
 // Function to test addNewProduct endpoint
 async function AddNewProduct(productData) {
     try {
@@ -54,7 +56,7 @@ async function GetAllProducts(){
     }
 }
 
-//function calls example
+// function calls example
 // AddNewProduct({
 //     productId: '125456',
 //     productName: 'Apple',

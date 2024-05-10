@@ -5,12 +5,12 @@ await mongoose.connect("mongodb+srv://eyevangelista1:HsId1En99PTh5M2Z@cluster0.g
 
 //creates a model for Student
 const User = mongoose.model('users',{
-    firstName : String,
-    middleName: String,
-    lastName: String,
-    userType: String,
+    firstName : { type: String, required: true },
+    middleName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    userType: { type: String, default: "customer" },
     email: { type: String, unique: true },
-    password: String,
+    password: { type: String, required: true },
     shoppingCart: [String], //array of product ids
     pastPurchases: [String] //array of product ids
 });
