@@ -21,13 +21,11 @@ const addUser = async (req, res) => {
         return;
     }   
     const newUser = new User(req.body);
-    console.log(newUser);
     await newUser.save();
     res.send({inserted: true});
 }
 
 const getUserbyEmail = async (req, res) => {
-    console.log(req.body);
     const user = await User.findOne({email: req.body.email})
     res.send(user);;
 }
@@ -59,4 +57,8 @@ const deleteUser = async (req, res) => {
     res.send(userDeletetion);
 };
 
-export {addUser, getUserbyEmail, updateUserDetails, deleteUser}
+const showAllUser = async (req, res) => {
+    res.send(await User.find({}));
+}
+
+export {addUser, getUserbyEmail, updateUserDetails, deleteUser, showAllUser}

@@ -22,7 +22,7 @@ const addNewProduct = async (req, res) => {
 };
 
 const getProductByID = async (req, res) => {
-    res.send(await Product.findOne(req.body.productID));
+    res.send(await Product.findOne({productId: req.body.productId}));
 };
 
 const updateProductDetails = async (req, res) => {
@@ -54,4 +54,8 @@ const deleteProduct = async (req, res) => {
     res.send(productDeletetion);
 };
 
-export {addNewProduct, getProductByID, updateProductDetails, deleteProduct}
+const showAllProducts = async (req, res) => {
+    res.send(await Product.find({}));
+}
+
+export {addNewProduct, getProductByID, updateProductDetails, deleteProduct, showAllProducts}
