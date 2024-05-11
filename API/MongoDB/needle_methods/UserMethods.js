@@ -13,19 +13,14 @@ async function AddUser(userData) {
 }
 
 // Function to test getUserByEmail endpoint
-async function GetUserByEmail(emailq) {
-    needle.post(    
-        'http://localhost:3001/get-user-by-email',
-        { email: emailq }, // Pass email as a query parameter
-        (err, res) => { 
-            if (err) {
-                console.error('Error:', err);
-                return;
-            }
-            console.log(res.body);
-            return res.body;
-        }
-    );  
+async function GetUserByEmail(email) {
+    try {
+        const response = await needle('post', `${baseURL}/get-user-by-email`, {email: email});
+        // console.log('Found User:', response.body);
+        return response.body;
+    } catch (error) {
+        console.error('Error searching user:', error.message);
+    }
 }
 
 // Function to test updateUserDetails endpoint
@@ -68,7 +63,7 @@ async function GetAllUsers(){
 //     password: 'password123'
 // });
 
-// GetUserByEmail('john2@example.com');
+// console.log(GetUserByEmail('john1@example.com'));
 // GetAllUsers();
 // UpdateUserDetails('john2@example.com', { firstName: 'Jonathan' });   //email cannot be modified here
 // DeleteUser('john2@example.com');

@@ -6,20 +6,16 @@ await mongoose.connect("mongodb+srv://eyevangelista1:HsId1En99PTh5M2Z@cluster0.g
 //creates a model for Student
 const User = mongoose.model('users',{
     firstName : { type: String, required: true },
-    middleName: { type: String, required: true },
+    middleName: { type: String },
     lastName: { type: String, required: true },
     userType: { type: String, default: "customer" },
-    email: { type: String, unique: true },
+    email: { type: String, unique: true, required: true },
     password: { type: String, required: true },
     shoppingCart: [String], //array of product ids
     pastPurchases: [String] //array of product ids
 });
 
 const addUser = async (req, res) => {
-    if (!(req.body.firstName && req.body.lastName && req.body.userType && req.body.email && req.body.password)){
-        res.send({inserted: false, message: "Empty Field Detected"});
-        return;
-    }   
     const newUser = new User(req.body);
     await newUser.save();
     res.send({inserted: true});
