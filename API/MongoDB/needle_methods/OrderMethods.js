@@ -57,6 +57,6 @@ export const showAllOrders = async () => {
 // });
 // getOrderByTransactionId('123457');
 // updateOrder('123456', { orderQuantity: 10, orderStatus: 1 });
-// deleteOrder('123456');
+// deleteOrder('123457');
 // showAllOrderFromAUser('test@example.com');
 // showAllOrders();
