@@ -57,4 +57,4 @@ const showAllUser = async (req, res) => {
     res.send(await User.find({}));
 }
 
-export {addUser, getUserbyEmail, updateUserDetails, deleteUser, showAllUser}
+export {User, addUser, getUserbyEmail, updateUserDetails, deleteUser, showAllUser}

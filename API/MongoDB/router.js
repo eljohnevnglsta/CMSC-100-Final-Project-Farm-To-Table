@@ -1,7 +1,7 @@
 import { addUser, getUserbyEmail, updateUserDetails, deleteUser, showAllUser } from "./controllers/UserController.js"
 import { addNewProduct, getProductByID, updateProductDetails, deleteProduct, showAllProducts } from "./controllers/ProductController.js"
 import { addOrder, getOrderByTransactionId, updateOrder, deleteOrder, showAllOrderFromAUser, showAllOrders } from "./controllers/OrderController.js";
-import { signup, login, logout } from "../CustomerActions.js";
+import { signup, login, logout } from "./actions/customer.js";
 //sends the function logic from controller to the server
 
 const router = (app) => {
@@ -12,14 +12,12 @@ const router = (app) => {
     app.post('/delete-user', deleteUser);
     app.post('/show-all-user', showAllUser);
 
-
     // product
     app.post('/add-product', addNewProduct)
     app.post('/get-product-by-id', getProductByID);
     app.post('/update-product', updateProductDetails);
     app.post('/delete-product', deleteProduct);
     app.post('/show-all-product', showAllProducts);
-
 
     // order
     app.post('/add-order', addOrder);
@@ -28,36 +26,11 @@ const router = (app) => {
     app.post('/delete-order', deleteOrder);
     app.post('/show-orders-of-user', showAllOrderFromAUser);
     app.post('/show-all-orders', showAllOrders); 
-    
 
-    // login and signup visible to the user 
-    app.post('/signup', async (req, res) => {
-        try {
-            const userData = req.body;
-            const signupResult = await signup(userData, res);
-            res.json(signupResult);
-        } catch (error) {
-            res.status(500).json({ status: false, message: "Internal server error" });
-        }
-    });
-
-    app.post('/login', async (req, res) => {
-        try {
-            const { email, password } = req.body;
-            const loginResult = await login(email, password, res);
-            res.json(loginResult);
-        } catch (error) {
-            res.status(500).json({ status: false, message: "Internal server error" });
-        }
-    });
-
-    app.post('/logout', async (req, res) => {
-        try {
-            logout(res);
-        } catch (error) {
-            res.status(500).json({ status: false, message: "Internal server error" });
-        }
-    });
+    // authentication endpoints
+    app.post('/signup', signup);
+    app.post('/login', login);
+    app.post('/logout', logout);
 }
 
 export default router;
