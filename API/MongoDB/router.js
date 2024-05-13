@@ -1,7 +1,7 @@
 import { addUser, getUserbyEmail, updateUserDetails, deleteUser, showAllUser } from "./controllers/UserController.js"
 import { addNewProduct, getProductByID, updateProductDetails, deleteProduct, showAllProducts } from "./controllers/ProductController.js"
 import { addOrder, getOrderByTransactionId, updateOrder, deleteOrder, showAllOrderFromAUser, showAllOrders } from "./controllers/OrderController.js";
-import { signup, login, logout } from "./actions/customer.js";
+import { signup, login, logout, addToCart, removeFromCart, checkout, cancelOrder } from "./actions/customer.js";
 //sends the function logic from controller to the server
 
 const router = (app) => {
@@ -31,6 +31,12 @@ const router = (app) => {
     app.post('/signup', signup);
     app.post('/login', login);
     app.post('/logout', logout);
+
+    // shopping endpoints 
+    app.post('/add-to-cart', addToCart);
+    app.post('/remove-from-cart', removeFromCart);
+    app.post('/checkout', checkout);
+    app.post('/cancel-order', cancelOrder);
 }
 
 export default router;

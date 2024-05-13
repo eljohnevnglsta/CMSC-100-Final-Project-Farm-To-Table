@@ -58,4 +58,4 @@ const showAllProducts = async (req, res) => {
     res.send(await Product.find({}));
 }
 
-export {addNewProduct, getProductByID, updateProductDetails, deleteProduct, showAllProducts}
+export {Product, addNewProduct, getProductByID, updateProductDetails, deleteProduct, showAllProducts}

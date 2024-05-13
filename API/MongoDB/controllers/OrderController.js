@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 await mongoose.connect("mongodb+srv://eyevangelista1:HsId1En99PTh5M2Z@cluster0.gqe1qwj.mongodb.net/FarmToTable ");
 
-const Order = mongoose.model('order',{
+export const Order = mongoose.model('order',{
     transactionId: {
         type: String,
         unique: true,
