@@ -1,0 +1,149 @@
+/*----------Border----------*/
+.border{
+    display: flex;
+    position: absolute;
+  
+    width: 700px; 
+    height: 760px;
+    
+    margin-left: 760px;
+    margin-top: -50px; 
+
+    background-color: #FFC72C;
+}
+
+/*----------SignUpBorder----------*/
+#SignUpBorder{
+    display: flex;
+    position: absolute;
+  
+    width: 400px; 
+    height: 400px;
+    
+    margin-left: 180px;
+    margin-top: 150px; 
+
+    border-radius: 30px; 
+    background-color: #FFC72C;
+}  
+
+/*----------Message----------*/
+.welcome{
+    display: flex;
+    position: absolute;
+
+    font-size: 30px;
+    font-family: impact, sans-serif;
+
+    margin-left: 110px;
+    margin-top: 30px; 
+}
+.create{
+    display: flex;
+    position: absolute;
+
+    margin-left: 175px;
+    margin-top: 70px; 
+}
+
+/*----------Email----------*/
+.email{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 100px; 
+}
+#email{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 120px; 
+
+    border-radius: 5px; 
+}
+
+/*----------Password----------*/
+.password{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 150px; 
+}
+#password{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 170px; 
+
+    border-radius: 5px; 
+
+}
+
+/*----------Submit----------*/
+.submit{
+    display: flex;
+    position: absolute;
+  
+    width: 200px; 
+    height: 40px;
+    
+    margin-left: 100px;
+    margin-top: 220px; 
+
+    border-radius: 10px; 
+}
+.submitText{
+    display: flex;
+    position: absolute;
+
+    margin-left: 60px;
+    margin-top: 0px; 
+
+    font-size: 30px;
+    font-family: impact, sans-serif;
+}
+/*----------CreateAccount----------*/
+.line {
+    display: flex;
+    position: absolute;
+  
+    width: 270px; 
+    height: 2px;
+    
+    margin-left: 70px;
+    margin-top: 280px; 
+
+    background-color: black;
+}
+.createAcc{
+    display: flex;
+    position: absolute;
+  
+    width: 200px; 
+    height: 40px;
+    
+    margin-left: 100px;
+    margin-top: 335px; 
+
+    border-radius: 10px; 
+}
+.createAccText{
+    display: flex;
+    position: absolute;
+
+    margin-left: 10px;
+    margin-top: 5px; 
+
+    font-size: 20px;
+    font-family: impact, sans-serif;
+}

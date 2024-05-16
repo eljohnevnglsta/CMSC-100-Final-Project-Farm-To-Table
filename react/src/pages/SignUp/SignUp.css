@@ -1,0 +1,165 @@
+/*----------SignUpBorder----------*/
+#SignUpBorder{
+    display: flex;
+    position: absolute;
+  
+    width: 400px; 
+    height: 630px;
+    
+    margin-left: 500px;
+    margin-top: 40px; 
+
+    border-radius: 30px; 
+    background-color: #FFC72C;
+}  
+
+/*----------Message----------*/
+.welcome{
+    display: flex;
+    position: absolute;
+
+    font-size: 30px;
+    font-family: impact, sans-serif;
+
+    margin-left: 30px;
+    margin-top: 30px; 
+}
+.create{
+    display: flex;
+    position: absolute;
+
+    margin-left: 120px;
+    margin-top: 70px; 
+}
+
+/*----------FirstName----------*/
+.firstLabel{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 120px; 
+}
+#firstName{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 140px; 
+
+    border-radius: 5px; 
+
+}
+
+/*----------MiddleName----------*/
+.middleLabel{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 170px; 
+}
+#middleName{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 190px; 
+
+    border-radius: 5px; 
+
+}
+
+/*----------LastName----------*/
+.lastLabel{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 220px; 
+}
+#lastName{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 240px; 
+
+    border-radius: 5px; 
+}
+
+/*----------Email----------*/
+.email{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 270px; 
+}
+#email{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 290px; 
+
+    border-radius: 5px; 
+
+}
+
+/*----------Password----------*/
+.password{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 320px; 
+}
+#password{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 340px; 
+
+    border-radius: 5px; 
+}
+
+/*----------Submit----------*/
+.submit{
+    display: flex;
+    position: absolute;
+  
+    width: 200px; 
+    height: 40px;
+    
+    margin-left: 100px;
+    margin-top: 420px; 
+
+    border-radius: 10px; 
+}
+.submitText{
+    display: flex;
+    position: absolute;
+
+    margin-left: 45px;
+    margin-top: 0px; 
+
+    font-size: 30px;
+    font-family: impact, sans-serif;
+}
