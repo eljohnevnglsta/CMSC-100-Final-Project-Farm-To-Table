@@ -1,4 +1,34 @@
-// import './SignUp.css';
+import './SignUp.css';
+import axios from 'axios';
+
+const handleSignUp = async (event) => {
+  event.preventDefault(); // Prevent default form submission
+  const url = 'http://localhost:3001/signup';
+  const data = {
+    firstName: document.getElementById('firstName').value,
+    middleName: document.getElementById('middleName').value,
+    lastName: document.getElementById('lastName').value,
+    email: document.getElementById('email').value,
+    password: document.getElementById('password').value,
+    confirmPassword: document.getElementById('confirmPassword').value
+  };
+
+  var status = false;
+  try {
+    const response = await axios.post(url, data);
+    console.log(response);
+    status = response.data.status;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+
+  if (!status){
+    alert(status.message);
+    return;
+  }
+
+  window.location.href = '/home';
+}// import './SignUp.css';
 
 const SignUp = () => {
 
