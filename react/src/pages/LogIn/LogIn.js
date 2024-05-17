@@ -7,8 +7,8 @@ const LogIn = () => {
 
     const url = 'http://localhost:3001/login';
     const data = {
-      email: document.getElementById('email').value,
-      password: document.getElementById('password').value,
+      email: document.getElementById('LIemail').value,
+      password: document.getElementById('LIpassword').value,
     };
     var status = '';
     try {
@@ -53,7 +53,7 @@ const LogIn = () => {
 
           <div className="LIline"></div>
         </form>
-        <form onSubmit={createClick}>
+        <form onSubmit={createAccount}>
           <button type="submit" className="LICreateAcc">
             <p className="LICreateAccText">Create New Account</p>
           </button>
