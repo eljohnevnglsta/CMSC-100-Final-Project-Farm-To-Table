@@ -1,11 +1,37 @@
-import './LogIn.css';
+// import './LogIn.css';
+import axios from 'axios';
 
 const LogIn = () => {
 
-  const handleLogIn = () => {
+  const handleLogIn = async (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    const url = 'http://localhost:3001/login';
+    const data = {
+      email: document.getElementById('email').value,
+      password: document.getElementById('password').value,
+    };
+    var status = '';
+    try {
+      const response = await axios.post(url, data);  // Await the response
+      console.log(response.data);
+      status = response.data.status;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
+      console.log(status);
+      if (!status){
+        alert('Invalid email or password');
+        return;
+      }
+
+      window.location.href = '/home';
   };
 
-  const createClick = () =>{
+  const createAccount = (event) => {
+    event.preventDefault();
+    window.location.href = '/signup';
   };
 
   return (
@@ -28,7 +54,7 @@ const LogIn = () => {
 
           <div className="line"></div>
         </form>
-        <form onSubmit={createClick}>
+        <form onSubmit={createAccount}>
           <button type="submit" className="createAcc">
             <p className="createAccText">Create New Account</p>
           </button>

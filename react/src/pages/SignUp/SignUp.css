@@ -4,7 +4,7 @@
     position: absolute;
   
     width: 400px; 
-    height: 630px;
+    height: 670px;
     
     margin-left: 500px;
     margin-top: 40px; 
@@ -140,6 +140,27 @@
     border-radius: 5px; 
 }
 
+/*----------ConfirmPassword----------*/
+.confirmPassword {
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 370px; 
+}
+#confirmPassword {
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 390px; 
+
+    border-radius: 5px; 
+}
+
 /*----------Submit----------*/
 .submit{
     display: flex;
@@ -149,7 +170,7 @@
     height: 40px;
     
     margin-left: 100px;
-    margin-top: 420px; 
+    margin-top: 470px; 
 
     border-radius: 10px; 
 }
