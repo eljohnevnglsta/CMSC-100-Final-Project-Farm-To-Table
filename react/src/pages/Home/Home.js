@@ -1,8 +1,8 @@
-import './Home.css';
 import React, { useState } from 'react';
 import NavigationBar from './Components/NavigationBar';
 import ItemCard from './Components/ItemCard';
 import Cart from './Components/Cart';
+import Order from './Components/Order';
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('Products');
@@ -38,6 +38,9 @@ export default function Home() {
         {selectedCategory === 'Cart' && (
           <Cart data={cartItems} setCartItems={setCartItems} />
         )}
+        {selectedCategory === 'Order' && (
+          <Order data={cartItems} setCartItems={setCartItems} />
+        )}
       </div>
     </div>
   );
@@ -47,7 +50,7 @@ export default function Home() {
 const menus = [
   { name: "Products", url: "#", id: 1},
   { name: "Cart", url: "#", id: 2},
-  { name: "Orders", url: "#", id: 3},
+  { name: "Order", url: "#", id: 3},
 ];
 //array of objects
 const items = [

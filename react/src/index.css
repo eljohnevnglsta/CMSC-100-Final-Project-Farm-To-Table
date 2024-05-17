@@ -1,0 +1,501 @@
+/*LogInCSS*/
+/*----------LogInBorder----------*/
+#LIBorder{
+    display: flex;
+    position: absolute;
+  
+    width: 400px; 
+    height: 400px;
+
+    margin-left: 10%;
+    margin-right: auto;
+    
+    margin-top: 150px; 
+
+    border-radius: 30px; 
+    background-color: #FFC72C;
+}  
+
+/*----------Message----------*/
+.LIWelcome{
+    display: flex;
+    position: absolute;
+
+    font-size: 30px;
+    font-family: impact, sans-serif;
+
+    margin-left: 110px;
+    margin-top: 30px; 
+}
+.LICreate{
+    display: flex;
+    position: absolute;
+
+    margin-left: 175px;
+    margin-top: 70px; 
+}
+
+/*----------Email----------*/
+.LIEmail{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 100px; 
+}
+#LIEmail{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 120px; 
+
+    border-radius: 5px; 
+}
+
+/*----------Password----------*/
+.LIPassword{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 150px; 
+}
+#LIPassword{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 170px; 
+
+    border-radius: 5px; 
+
+}
+
+/*----------Submit----------*/
+.LISubmit{
+    display: flex;
+    position: absolute;
+  
+    width: 200px; 
+    height: 40px;
+    
+    margin-left: 100px;
+    margin-top: 220px; 
+
+    border-radius: 10px; 
+}
+.LISubmitText{
+    display: flex;
+    position: absolute;
+
+    margin-left: 60px;
+    margin-top: 0px; 
+
+    font-size: 30px;
+    font-family: impact, sans-serif;
+}
+/*----------CreateAccount----------*/
+.LIine {
+    display: flex;
+    position: absolute;
+  
+    width: 270px; 
+    height: 2px;
+    
+    margin-left: 70px;
+    margin-top: 280px; 
+
+    background-color: black;
+}
+.LICreateAcc{
+    display: flex;
+    position: absolute;
+  
+    width: 200px; 
+    height: 40px;
+    
+    margin-left: 100px;
+    margin-top: 335px; 
+
+    border-radius: 10px; 
+}
+.LICreateAccText{
+    display: flex;
+    position: absolute;
+
+    margin-left: 10px;
+    margin-top: 5px; 
+
+    font-size: 20px;
+    font-family: impact, sans-serif;
+}
+
+
+/*SignUpCSS*/
+/*----------SignUpBorder----------*/
+#SUBorder{
+    display: flex;
+   
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: 40px; 
+
+    width: 400px; 
+    height: 630px; 
+    
+    border-radius: 30px; 
+    background-color: #FFC72C;
+}  
+
+/*----------Message----------*/
+.SUWelcome{
+    display: flex;
+    position: absolute;
+
+    font-size: 30px;
+    font-family: impact, sans-serif;
+
+    margin-left: 30px;
+    margin-top: 30px; 
+}
+.SUCreate{
+    display: flex;
+    position: absolute;
+
+    margin-left: 120px;
+    margin-top: 70px; 
+}
+
+/*----------FirstName----------*/
+.SUFNLabel{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 120px; 
+}
+#SUFN{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 140px; 
+
+    border-radius: 5px; 
+
+}
+
+/*----------MiddleName----------*/
+.SUMNLabel{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 170px; 
+}
+#SUMN{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 190px; 
+
+    border-radius: 5px; 
+
+}
+
+/*----------LastName----------*/
+.SULNLabel{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 220px; 
+}
+#SULN{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 240px; 
+
+    border-radius: 5px; 
+}
+
+/*----------Email----------*/
+.SUEmail{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 270px; 
+}
+#SUEmail{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 290px; 
+
+    border-radius: 5px; 
+
+}
+
+/*----------Password----------*/
+.SUPassword{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 320px; 
+}
+#SUPassword{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 340px; 
+
+    border-radius: 5px; 
+}
+
+/*----------Submit----------*/
+.SUSubmit{
+    display: flex;
+    position: absolute;
+  
+    width: 200px; 
+    height: 40px;
+    
+    margin-left: 100px;
+    margin-top: 420px; 
+
+    border-radius: 10px; 
+}
+.SUSubmitText{
+    display: flex;
+    position: absolute;
+
+    margin-left: 45px;
+    margin-top: 0px; 
+
+    font-size: 30px;
+    font-family: impact, sans-serif;
+}
+
+
+/*HomeCSS*/
+* {
+    /* border: 1px solid red; */
+    font-family: "Poppins", sans-serif;
+  }
+  
+  #root {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    background-color: orange;
+    margin: -10px;
+    margin-left: 0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  #siteName {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    margin: 5px
+  }
+  
+  .tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  
+  #siteName {
+    justify-content: center;
+    margin: auto;
+  }
+  
+  .body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .clickable {
+    cursor: pointer;
+  }
+  
+  .cardsHolder {
+    margin-top: 150px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+ 
+  
+  .card {
+    background-color: orange;
+    border-radius: 10px;
+    margin: 10px;
+    margin-top: 20px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .card img {
+    height: 200px;
+    width: 200px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .card-content {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .card-content button {
+    font-family: "Poppins", sans-serif;
+    border-radius: 10px;
+  }
+  
+  .cartHolder {
+    background-color: orange;
+    border-radius: 10px;
+    margin-top: -135px; 
+    margin-left: 350px;
+    margin-bottom: 20px;
+    min-width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 10px; 
+    padding-top: 20px; 
+  }
+  
+  .totalItems {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .itemList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 10px;
+    align-items: center;
+  }
+  
+  .cartItem {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 280px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .cartItem img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+  
+  .details {
+    margin-bottom: 10px;
+    min-width: 150px;
+  }
+  
+  .price {
+    margin-left: auto;
+    font-weight: bold;
+  }
+  
+  .quantity {
+    text-align: center;
+    margin-right: 10px;
+    margin-left: auto;
+  }
+  
+  .totalDue {
+    font-weight: 800;
+  }
+  
+  .cartItem button {
+    border-radius: 10px;
+    margin-left: 5px;
+  }
+
+  .cartHolders {
+    background-color: orange;
+    border-radius: 10px;
+    margin: 10px;
+    margin-top: 200px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+
+
+  .checkout {
+    border-radius:4px;
+    margin-left: 5px;
+  }
+
+
+  .Pending {
+    background-color: orange;
+    border-radius: 10px;
+    margin: 10px;
+    margin-top: 200px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  

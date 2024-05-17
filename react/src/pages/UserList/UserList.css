@@ -1,0 +1,111 @@
+----------UserList----------
+.UserList{
+    display: flex;
+    position: absolute;
+
+    font-size: 30px;
+    font-family: impact, sans-serif;
+
+    margin-left: 90px;
+    margin-top: 50px; 
+}
+
+#UserBorder{
+    display: flex;
+    position: absolute;
+  
+    width: 1300px; 
+    height: 50px;
+    
+    margin-left: 90px;
+    margin-top: 180px; 
+
+    border-radius: 30px 30px 0 0; 
+    background-color: #FFC72C;
+    border: 1px solid black; 
+}  
+
+/*----------UserListLabel----------*/
+.UName{
+    display: flex;
+    position: absolute;
+
+    font-size: 20px;
+
+    margin-left: 60px;
+    margin-top: 20px; 
+}
+.UEmail{
+    display: flex;
+    position: absolute;
+
+    font-size: 20px;
+
+    margin-left: 500px;
+    margin-top: 20px; 
+}
+.UUserType{
+    display: flex;
+    position: absolute;
+
+    font-size: 20px;
+
+    margin-left: 1000px;
+    margin-top: 20px; 
+}
+
+
+/*----------UserList1----------*/
+#UUserOutputBorder{
+    display: flex;
+    position: absolute;
+  
+    width: 1300px; 
+    height: 50px;
+    
+    margin-left: 90px;
+    margin-top: 230px; 
+    border: 1px solid black; 
+}  
+#UUserOutput{
+    display: flex;
+    position: absolute;
+  
+    width: 1300px; 
+    height: 50px;
+    
+    margin-left: 90px;
+    margin-top: 230px; 
+    border: 1px solid black; 
+}  
+.Name1{
+    display: flex;
+    position: absolute;
+
+    font-size: 20px;
+
+    margin-left: 60px;
+    margin-top: 20px; 
+}
+
+.Email1{
+    display: flex;
+    position: absolute;
+
+    font-size: 20px;
+
+    margin-left: 500px;
+    margin-top: 20px; 
+}
+.UserType1{
+    display: flex;
+    position: absolute;
+
+    font-size: 20px;
+
+    margin-left: 1000px;
+    margin-top: 20px; 
+}
+
+
+
