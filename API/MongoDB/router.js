@@ -1,7 +1,9 @@
 import { addUser, getUserbyEmail, updateUserDetails, deleteUser, showAllUser } from "./controllers/UserController.js"
+import { addSold, getSoldByProductId, deleteSold,showAllSold, updateSoldDetails } from "./controllers/SoldController.js"
 import { addNewProduct, getProductByID, updateProductDetails, deleteProduct, showAllProducts } from "./controllers/ProductController.js"
 import { addOrder, getOrderByTransactionId, updateOrder, deleteOrder, showAllOrderFromAUser, showAllOrders } from "./controllers/OrderController.js";
 import { signup, login, logout, addToCart, removeFromCart, checkout, cancelOrder } from "./actions/customer.js";
+import { approval } from "./actions/admin.js";
 //sends the function logic from controller to the server
 
 const router = (app) => {
@@ -37,6 +39,18 @@ const router = (app) => {
     app.post('/remove-from-cart', removeFromCart);
     app.post('/checkout', checkout);
     app.post('/cancel-order', cancelOrder);
+
+    //admin endpoints
+    app.post('/approval', approval);
+
+    // sold products
+    app.post('/get-sold-by-product-id', getSoldByProductId);
+    app.post('/show-all-sold', showAllSold);
+    app.post('/delete-sold', deleteSold);
+    app.post('/update-sold-details', updateSoldDetails);
+    app.post('/show-all-sold', showAllSold);
+    app.post('/show-all-sold', addSold);
+
 }
 
 export default router;
