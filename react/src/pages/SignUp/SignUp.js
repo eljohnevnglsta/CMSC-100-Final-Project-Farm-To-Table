@@ -5,11 +5,11 @@ const handleSignUp = async (event) => {
   event.preventDefault(); // Prevent default form submission
   const url = 'http://localhost:3001/signup';
   const data = {
-    firstName: document.getElementById('firstName').value,
-    middleName: document.getElementById('middleName').value,
-    lastName: document.getElementById('lastName').value,
-    email: document.getElementById('email').value,
-    password: document.getElementById('password').value,
+    firstName: document.getElementById('SUFN').value,
+    middleName: document.getElementById('SUMN').value,
+    lastName: document.getElementById('SULN').value,
+    email: document.getElementById('SUEmail').value,
+    password: document.getElementById('SUPassword').value,
     confirmPassword: document.getElementById('confirmPassword').value
   };
 
@@ -28,7 +28,7 @@ const handleSignUp = async (event) => {
   }
 
   window.location.href = '/home';
-}// import './SignUp.css';
+}
 
 const SignUp = () => {
 
