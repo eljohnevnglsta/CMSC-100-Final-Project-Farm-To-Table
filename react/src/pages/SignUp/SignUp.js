@@ -52,6 +52,9 @@ const SignUp = () => {
 
         <label for="SUPassword" class="SUPassword">Password:</label>
         <input type="password" id="SUPassword" name="password" required></input><br/>
+
+        <label htmlFor="confirmPassword" className="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required></input><br/>
         
         <button type="submit" class="SUSubmit" /*onSubmit={handleClick}*/>
         <p class="SUSubmitText">Sign Up</p>
