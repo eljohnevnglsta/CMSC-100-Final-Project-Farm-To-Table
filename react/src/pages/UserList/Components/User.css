@@ -1,0 +1,11 @@
+.User {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .User-content > div {
+    flex: 1;
+    text-align: center;
+  }
