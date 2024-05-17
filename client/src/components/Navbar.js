@@ -8,6 +8,7 @@ export default function Root() {
                 <ul>
                 <li><Link to={`/`}>Home</Link></li>
                 <li><Link to={`/users`}>Customers</Link></li>
+                <li><Link to={`/Products`}>Product Management</Link></li>
                 </ul>
             </nav>
             <Outlet />

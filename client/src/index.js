@@ -6,12 +6,15 @@ import './index.css';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Accounts from './pages/Accounts';
+import Products from './pages/ManageProducts';
+
 
 const router = createBrowserRouter([
   {
     path: '/', element: <Navbar />, children: [
       { path: '/', element: <Home /> },
       { path: 'users', element: <Accounts /> },
+      { path: 'Products', element: <Products/> }
     ]
   }
 ])
