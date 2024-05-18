@@ -3,7 +3,7 @@ import { Product } from "../controllers/ProductController.js";
 
 export const approval = async (req, res) => {
     try {
-        const { transactionId } = req.body;
+        const { transactionId} = req.body;
         
         const completeorder = await Order.findOne({transactionId: transactionId});
 

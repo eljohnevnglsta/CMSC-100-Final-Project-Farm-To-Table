@@ -1,23 +1,13 @@
 import React from 'react';
-import '../stylesheets/Root.css';
 import rootbg from '../images/root-img.jpg';
 import rootlogo from '../images/logo.jpg';
+import '../stylesheets/Root.css';
+import Navbar from '../components/navbar';
 
 export default function Root() {
     return (
         <div className="root-container">
-            <nav className="root-nav">
-                <img
-                    className="root-nav-logo"
-                    src={rootlogo}
-                    alt="Farm-To-Table Logo"
-                />
-                <div className="root-nav-name">Farm-To-Table</div>
-                <div className="root-nav-links">
-                    <a href="/login">Login</a>
-                    <a href="/signup">Signup</a>
-                </div>
-            </nav>
+            <Navbar links = {navElements}/>
             <div className="root-content">
                 <img
                     src={rootbg}
@@ -33,3 +23,8 @@ export default function Root() {
         </div>
     );
 }
+
+const navElements = [
+    { title: 'Login', path: '/login' },
+    { title: 'Signup', path: '/signup' },
+]

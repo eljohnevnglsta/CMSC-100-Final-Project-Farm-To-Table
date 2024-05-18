@@ -163,6 +163,9 @@ export const checkout = async (req, res) => {
             await newOrder.save();
         }
 
+        existingUser.shoppingCart = [];
+        existingUser.save();
+        
         res.send({ status: true, message: "Orders placed successfully" });
 
     } catch (error) {
