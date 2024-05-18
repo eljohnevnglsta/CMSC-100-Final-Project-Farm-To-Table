@@ -1,16 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import LogIn from './pages/LogIn/LogIn';
-import SignUp from './pages/SignUp/SignUp';
-import Home from './pages/Home/Home';
-// import UserList from './pages/UserList/UserList';
-
+import './index.css';
+import Root from './pages/Root';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([
-  { path: '/', element: <LogIn /> },
-  { path: '/home', element: <Home /> },
-  { path: '/signup', element: <SignUp /> }
+  { path: '/', element: <Root /> }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,3 +14,4 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+

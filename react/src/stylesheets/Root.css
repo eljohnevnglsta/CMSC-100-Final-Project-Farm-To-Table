@@ -1,0 +1,94 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Disable scrolling */
+    font-family: Arial, sans-serif;
+}
+
+.root-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+}
+
+.root-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: #72471c; /* Semi-transparent background */
+    color: white;
+    z-index: 10; /* Ensure navbar is on top */
+}
+
+.root-nav-logo {
+    height: 50px;
+}
+
+.root-nav-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.root-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Add space between links */
+    margin-right: 2rem;
+}
+
+.root-nav-links a {
+    margin-right: 1rem; /* Adjust right margin for better spacing */
+    color: white;
+    text-decoration: none;
+}
+
+.root-nav-links a:hover {
+    text-decoration: underline;
+}
+
+.root-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: white;
+    text-align: center;
+    overflow: hidden; /* Ensure no overflow */
+}
+
+.root-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: -1;
+}
+
+.root-content img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px); /* Full height minus navbar height */
+    object-fit: cover;
+    z-index: -2;
+}
+
+.root-content h1 {
+    font-size: 2.5rem;
+    margin: 0.5rem 0;
+}
+
+.root-content p {
+    font-size: 1.2rem;
+    margin: 0.5rem 2rem;
+    max-width: 800px;
+}
