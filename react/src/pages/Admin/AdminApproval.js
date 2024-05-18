@@ -4,8 +4,6 @@ import { showAllOrders, updateOrder } from '../MongoDB/needle_methods/OrderMetho
 function AdminApproval(){
     const [pendingOrders, setPendingOrders] = useState([]);
     const [previousOrders, setPreviousOrders] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchOrders = async () => {
@@ -14,9 +12,7 @@ function AdminApproval(){
                 setPendingOrders(allOrders.filter(order => order.orderStatus === 0));
                 setPreviousOrders(allOrders.filter(order => order.orderStatus !== 0));
             } catch (err) {
-                setError('Error fetching orders');
-            } finally {
-                setLoading(false);
+                console.error('Error fetching data:');
             }
         };
 
@@ -44,14 +40,6 @@ function AdminApproval(){
             console.error('Error cancelling order:', err.message);
         }
     };
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>{error}</div>;
-    }
 
     return (
         <div>
