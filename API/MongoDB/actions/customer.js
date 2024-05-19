@@ -87,48 +87,18 @@ export const logout = async (req, res) => {
     }
 }
 
-export const addToCart = async (req, res) => {
+export const updatedCartItems = async (req, res) => {
     try {
-        const { email, productId, quantity } = req.body;
-        const existingUser = await User.findOne({email: email});
-        const cart = existingUser.shoppingCart;
-        const productIndex = cart.findIndex(product => product.productId === productId);
-
-        if (productIndex === -1) {
-            cart.push({ productId: productId, quantity: quantity });
-        } else {
-            cart[productIndex].quantity += quantity;
-        }
-
-        existingUser.shoppingCart = cart;
-        await existingUser.save();
-
-        res.send({ status: true, message: "Product added to cart successfully" });
-    } catch (error) {
-        res.status(500).json({ status: false, message: "Internal server error" });
-    }
-}
-
-export const removeFromCart = async (req, res) => {
-    try {
-        const { email, productId, quantity } = req.body;
-        const existingUser = await User.findOne({email: email});
-        const cart = existingUser.shoppingCart;
-        const productIndex = cart.findIndex(product => product.productId === productId);
-
-        if (productIndex === -1) {
-            res.send({ status: false, message: "Product not found in cart" });
+        const { email, shoppingCart } = req.body;
+        const existingUser = await User.findOne({email: email})
+        if (!existingUser) {
+            res.send({ status: false, message: "User not found" });
             return;
         }
 
-        if (cart[productIndex].quantity > quantity) {
-            cart[productIndex].quantity -= quantity;
-        } else {
-            cart.splice(productIndex, 1);
-        }
-
-        res.send({ status: true, message: "Product removed from cart successfully" });
-
+        existingUser.shoppingCart = shoppingCart;
+        await existingUser.save();
+        res.send({ status: true, message: "Cart updated successfully" });
     } catch (error) {
         res.status(500).json({ status: false, message: "Internal server error" });
     }
@@ -163,6 +133,9 @@ export const checkout = async (req, res) => {
             await newOrder.save();
         }
 
+        existingUser.shoppingCart = [];
+        existingUser.save();
+        
         res.send({ status: true, message: "Orders placed successfully" });
 
     } catch (error) {

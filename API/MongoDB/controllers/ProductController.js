@@ -7,6 +7,8 @@ const Product = mongoose.model('Products',{
     productId: { type: String, required: true, unique: true },
     productName: { type: String, required: true },
     productDescription: { type: String, required: true },
+    productPrice: { type: Number, required: true },
+    productImage: { type: String, required: true },
     productType: { type: Number, enum: [1, 2], required: true }, // 1 for Crop, 2 for Poultry
     productQuantity: { type: Number, required: true }
 });
@@ -43,6 +45,13 @@ const updateProductDetails = async (req, res) => {
         if (req.body.productQuantity) {
             product.productQuantity = req.body.productQuantity;
         }
+        if (req.body.productPrice) {
+            product.productPrice = req.body.productPrice;
+        }
+        if (req.body.productImage) {
+            product.productImage = req.body.productImage;
+        }
+        
         res.json(await product.save());
     } catch (err) {
         res.status(400).json({ message: err.message });

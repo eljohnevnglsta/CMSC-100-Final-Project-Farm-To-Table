@@ -1,0 +1,187 @@
+/*----------SignUpBorder----------*/
+#SUBorder{
+    display: flex;
+   
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: 40px; 
+
+    width: 400px; 
+    height: 630px; 
+    
+    border-radius: 30px; 
+    background-color: #FFC72C;
+}   
+
+.SUWelcome{
+    display: flex;
+    position: absolute;
+
+    font-size: 30px;
+    font-family: impact, sans-serif;
+
+    margin-left: 30px;
+    margin-top: 30px; 
+}
+.SUCreate{
+    display: flex;
+    position: absolute;
+
+    margin-left: 120px;
+    margin-top: 70px; 
+}
+
+/*----------FirstName----------*/
+.SUFNLabel{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 120px; 
+}
+#SUFN{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 140px; 
+
+    border-radius: 5px; 
+
+}
+
+/*----------MiddleName----------*/
+.SUMNLabel{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 170px; 
+}
+#SUMN{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 190px; 
+
+    border-radius: 5px; 
+
+}
+
+/*----------LastName----------*/
+.SULNLabel{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 220px; 
+}
+#SULN{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 240px; 
+
+    border-radius: 5px; 
+}
+
+/*----------Email----------*/
+.SUEmail{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 270px; 
+}
+#SUEmail{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 290px; 
+
+    border-radius: 5px; 
+
+}
+
+/*----------Password----------*/
+.SUPassword{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 320px; 
+}
+#SUPassword{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 340px; 
+
+    border-radius: 5px; 
+}
+
+/*----------ConfirmPassword----------*/
+.confirmPassword{
+    display: flex;
+    position: absolute;
+
+    margin-left: 70px;
+    margin-top: 370px; /* Adjusted margin-top */
+}
+#confirmPassword{
+    display: flex;
+    position: absolute;
+  
+    width: 260px; 
+    height: 30px;
+    
+    margin-left: 70px;
+    margin-top: 390px; /* Adjusted margin-top */
+
+    border-radius: 5px; 
+}
+
+
+/*----------Submit----------*/
+.SUSubmit{
+    display: flex;
+    position: absolute;
+  
+    width: 200px; 
+    height: 40px;
+    
+    margin-left: 100px;
+    margin-top: 420px; 
+
+    border-radius: 10px; 
+}
+.SUSubmitText{
+    display: flex;
+    position: absolute;
+
+    margin-left: 45px;
+    margin-top: 0px; 
+
+    font-size: 30px;
+    font-family: impact, sans-serif;
+}

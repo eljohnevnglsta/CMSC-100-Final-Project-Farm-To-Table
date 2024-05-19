@@ -11,14 +11,8 @@ const User = mongoose.model('users',{
     userType: { type: String, default: "customer" },
     email: { type: String, unique: true, required: true },
     password: { type: String, required: true },
-    shoppingCart: [{
-        productId: { type: String, required: true },
-        quantity: { type: Number, default: 0 }
-    }],
-    pastPurchases: [{
-        productId: { type: String, required: true },
-        quantity: { type: Number, default: 0 }
-    }]
+    shoppingCart: [{}],
+    pastPurchases: [{}]
 });
 
 const addUser = async (req, res) => {
