@@ -1,0 +1,30 @@
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-details {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.field {
+    margin-bottom: 10px;
+}
+
+.field label {
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;
+}
+
+.field span {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.field:last-child {
+    margin-bottom: 0;
+}

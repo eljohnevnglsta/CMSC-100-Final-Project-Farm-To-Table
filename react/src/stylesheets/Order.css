@@ -1,0 +1,44 @@
+
+
+.orders-body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.Pending h1,
+.Approved h1,
+.Cancelled h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.status-card {
+    display: flex;
+    flex-direction: row;
+}
+
+.status-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.status-card img {
+    max-width: 100px;
+    max-height: 100px;
+    margin-bottom: 10px;
+}
+
+.status-card-name {
+    font-weight: bold;
+}
+
+.status-card-quantity {
+    margin-bottom: 5px;
+}
+
+.status-card-date {
+    color: #666;
+    font-size: 0.9rem;
+}

@@ -1,6 +1,5 @@
 import React from 'react';
 import rootbg from '../images/root-img.jpg';
-import rootlogo from '../images/logo.jpg';
 import '../stylesheets/Root.css';
 import Navbar from '../components/navbar';
 

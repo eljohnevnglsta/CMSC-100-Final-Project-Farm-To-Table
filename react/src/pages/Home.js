@@ -1,6 +1,6 @@
-import { get } from "mongoose";
 import Navbar from "../components/navbar"
 import axios from 'axios';
+import React, { useState } from 'react';
 import ProductCard from "../components/productcard";
 import CartItems from "../components/cartitems";    
 import "../stylesheets/Home.css";
@@ -18,78 +18,103 @@ const getProducts = async () => {
     return products;
 }
 
+export const getUserData = async (email) => {
+    const url = 'http://localhost:3001/get-user-by-email';
+    var user = {};
+    try {
+        const response = await axios.post(url, {email: email});
+        user = response.data;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+    return user;
 
+}
+
+const saveCart = async (email, cart) => {
+    const url = 'http://localhost:3001/update-cart';
+    try {
+        const response = await axios.post(url, {email: email, shoppingCart: cart});
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+const checkout = async (email) => {
+    const url = 'http://localhost:3001/checkout';
+    try {
+        const response = await axios.post(url, {email: email});
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+const email = JSON.parse(sessionStorage.getItem('user'));
+const userData = await getUserData(email);
 const productList = await getProducts();
-console.log(productList);
-
+const initialCart = userData.shoppingCart;
 
 export default function Home(props) {
-    const userData = JSON.parse(sessionStorage.getItem('user'));
-    
-    //dummy cart only
-    const cart = [
-        {
-            productId: "120",
-            productName: "orange",
-            productDescription: "fresh orange orange",
-            productType: 1,
-            productQuantity: 3,
-            productPrice: 12,
-            quantity: 3
-        },
-        {
-            productId: "120",
-            productName: "orange",
-            productDescription: "fresh orange orange",
-            productType: 1,
-            productQuantity: 3,
-            productPrice: 12,
-            quantity: 3
-        },
-        {
-            productId: "120",
-            productName: "orange",
-            productDescription: "fresh orange orange",
-            productType: 1,
-            productQuantity: 3,
-            productPrice: 12,
-            quantity: 3
-        }
-    ]
+    const [cart, setCart] = useState(initialCart);
 
-    return(
-        <div>
-            <Navbar links={navElements}/>
-            <div id="home-profile-tab">
-                <h2>Now Serving: </h2>
-                <p>{userData.firstName + " " + (!userData.middleName ? " " : userData.middleName) + " " + userData.lastName}</p>
-                <p>{userData.email}</p>
-            </div>
+    const addToCart = (product) => {
+        setCart((prevCart) => {
+            const existingItem = prevCart.find((item) => item.productId === product.productId);
+            if (existingItem) {
+                return prevCart.map((item) =>
+                    item.productId === product.productId ? { ...item, quantity: item.quantity + 1 } : item
+                );
+            } else {
+                return [...prevCart, { ...product, quantity: 1 }];
+            }
+        });
+    };
+
+    const updateQuantity = (productId, quantity) => {
+        setCart((prevCart) =>
+            prevCart.map((item) =>
+                item.productId === productId ? { ...item, quantity: Math.max(item.quantity + quantity, 1) } : item
+            )
+        );
+    };
+
+    const removeFromCart = (productId) => {
+        setCart((prevCart) => prevCart.filter((item) => item.productId !== productId));
+    };
+
+    return (
+        <div id="home-root">
+            <Navbar links={navElements} />
             <div className="home-body">
-                <div className="card-holder">
+                <div className="cardsHolder">
                     <h2>Products</h2>
                     <div className="products">
-                        {productList.map((product) => {
-                            return(
-                                <ProductCard product={product}/>
-                            )
-                        })}
+                        {productList.map((product) => (
+                            <ProductCard key={product.productId} product={product} addToCart={addToCart} />
+                        ))}
                     </div>
                 </div>
-                <div className="cart-holder">
+                <div className="cartHolder">
                     <h2>Cart</h2>
                     <div className="cart-items">
-                        {cart.map((item) => {
-                            return(
-                                <CartItems item={item} />
-                            )
-                        })}
+                        {cart.map((item) => (
+                            <CartItems
+                                key={item.productId}
+                                item={item}
+                                updateQuantity={updateQuantity}
+                                removeFromCart={removeFromCart}
+                            />
+                        ))}
                     </div>
-                </div>
+                    <button id="checkout-btn" onClick={() => {checkout(email); setCart([])}}>Checkout</button>
+                    <button id="save-cart" onClick={() => saveCart(email, cart)}>Save Current Cart</button>
+                </div>  
             </div>
         </div>
-    )
-}
+    );
+} 
 
 const navElements = [
     {title: "Orders", path: "/orders"},

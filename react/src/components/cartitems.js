@@ -1,16 +1,16 @@
 export default function CartItems(props) {
     const item = props.item;
     return (
-        <div className="cart-item">
+        <div className="cartItem">
             <p>{item.productName}</p>
             <p>{item.productPrice}</p>
             <div className="cart-item-quantity">
-                <button>-</button>
+                <button onClick={() => props.updateQuantity(item.productId, -1)}>-</button>
                 <div>{item.quantity}</div>
-                <button>+</button>
-                <button>Remove</button>
+                <button onClick={() => props.updateQuantity(item.productId, 1)}>+</button>
+                <button className="remove-btn" onClick={() => props.removeFromCart(item.productId)}>Remove</button>
             </div>
             <p>{item.quantity * item.productPrice}</p>
         </div>
-    )
+    );
 }

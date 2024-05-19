@@ -2,7 +2,7 @@ import { addUser, getUserbyEmail, updateUserDetails, deleteUser, showAllUser } f
 import { addSold, getSoldByProductId, deleteSold,showAllSold, updateSoldDetails } from "./controllers/SoldController.js"
 import { addNewProduct, getProductByID, updateProductDetails, deleteProduct, showAllProducts } from "./controllers/ProductController.js"
 import { addOrder, getOrderByTransactionId, updateOrder, deleteOrder, showAllOrderFromAUser, showAllOrders } from "./controllers/OrderController.js";
-import { signup, login, logout, addToCart, removeFromCart, checkout, cancelOrder } from "./actions/customer.js";
+import { signup, login, logout, checkout, cancelOrder, updatedCartItems } from "./actions/customer.js";
 import { approval } from "./actions/admin.js";
 //sends the function logic from controller to the server
 
@@ -35,8 +35,7 @@ const router = (app) => {
     app.post('/logout', logout);
 
     // shopping endpoints 
-    app.post('/add-to-cart', addToCart);
-    app.post('/remove-from-cart', removeFromCart);
+    app.post('/update-cart', updatedCartItems);
     app.post('/checkout', checkout);
     app.post('/cancel-order', cancelOrder);
 

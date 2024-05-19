@@ -32,7 +32,7 @@ export default function Login(props) {
           try {
             const findUser = await axios.post('http://localhost:3001/get-user-by-email', data);
             user = findUser.data;
-            sessionStorage.setItem('user', JSON.stringify(user));
+            sessionStorage.setItem('user', JSON.stringify(user.email));
           } catch (error) {
             console.error('Error:', error);
           }
