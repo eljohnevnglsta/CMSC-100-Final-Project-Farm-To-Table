@@ -1,5 +1,7 @@
 import axios from 'axios';
 import "../stylesheets/Login.css";
+import rootbg from '../images/root-img.jpg';
+import Navbar from "../components/navbar"
 
 export default function Login(props) {
     
@@ -47,6 +49,13 @@ export default function Login(props) {
     
       return (
         <div className='LoginPage'>
+          <Navbar links = {navElements}/>
+          <div id="LIBackground">
+          <img
+                    src={rootbg}
+                    alt="peter-wendt-r5-KSMkyo-Sc-unsplash"
+                    border="0"
+                />
             <div id="LIBorder">
                 <form id="LIForm" onSubmit={handleLogIn}>
                     <h1 className="LIWelcome">FARM-TO-TABLE</h1>
@@ -70,6 +79,12 @@ export default function Login(props) {
                     </button>
                 </form>
             </div>
+            </div>
         </div>
     );
 }
+
+const navElements = [
+  { title: 'Login', path: '/login' },
+  { title: 'Signup', path: '/signup' },
+]

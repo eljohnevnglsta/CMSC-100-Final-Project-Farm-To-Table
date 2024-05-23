@@ -55,7 +55,7 @@ export default function Order(props) {
                 {pendingOrders.map(order => 
                 <div key={order.transactionId}>
                     <StatusCard item={order}/>
-                    <button onClick={() => cancelOrder(order.transactionId, pendingOrders, setPendingOrders, setCancelledOrders)}>Cancel Order</button>
+                    <button class="cancel-btn" onClick={() => cancelOrder(order.transactionId, pendingOrders, setPendingOrders, setCancelledOrders)}>Cancel Order</button>
                 </div>
                 )}
             </div>

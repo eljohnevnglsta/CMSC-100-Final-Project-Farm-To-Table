@@ -1,20 +1,68 @@
+/*----------Background----------*/
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+.SignupPage{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+#SUBackground {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    overflow: hidden;
+    position: relative;
+}
+#SUBackground img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+#SUBackground::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
 /*----------SignUpBorder----------*/
 #SUBorder{
     display: flex;
-   
+    position: absolute;
+    flex-direction: column;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    margin-top: 40px; 
+    margin-top: 5%; 
 
     width: 400px; 
     height: 630px; 
     
     border-radius: 30px; 
-    background-color: #FFC72C;
+    background-color: rgba(240, 240, 240, 0.8);
 }   
-
 .SUWelcome{
+    color: green;
     display: flex;
     position: absolute;
 
@@ -25,6 +73,8 @@
     margin-top: 30px; 
 }
 .SUCreate{
+    font-weight: bold;
+    color: green;
     display: flex;
     position: absolute;
 
@@ -34,11 +84,13 @@
 
 /*----------FirstName----------*/
 .SUFNLabel{
+    color: green;
     display: flex;
     position: absolute;
 
     margin-left: 70px;
-    margin-top: 120px; 
+    margin-top: 120px;
+    font-weight: bold; 
 }
 #SUFN{
     display: flex;
@@ -56,6 +108,8 @@
 
 /*----------MiddleName----------*/
 .SUMNLabel{
+    font-weight: bold;
+    color: green;
     display: flex;
     position: absolute;
 
@@ -78,6 +132,8 @@
 
 /*----------LastName----------*/
 .SULNLabel{
+    font-weight: bold;
+    color: green;
     display: flex;
     position: absolute;
 
@@ -99,6 +155,8 @@
 
 /*----------Email----------*/
 .SUEmail{
+    font-weight: bold;
+    color: green;
     display: flex;
     position: absolute;
 
@@ -121,6 +179,8 @@
 
 /*----------Password----------*/
 .SUPassword{
+    font-weight: bold;
+    color: green;
     display: flex;
     position: absolute;
 
@@ -142,6 +202,8 @@
 
 /*----------ConfirmPassword----------*/
 .confirmPassword{
+    font-weight: bold;
+    color: green;
     display: flex;
     position: absolute;
 
@@ -174,6 +236,7 @@
     margin-top: 420px; 
 
     border-radius: 10px; 
+    background-color: yellow;
 }
 .SUSubmitText{
     display: flex;
@@ -184,4 +247,9 @@
 
     font-size: 30px;
     font-family: impact, sans-serif;
+    color: green;
+}
+
+.SUSubmit:hover {
+    background-color:  #e6e600;
 }
