@@ -1,5 +1,7 @@
 import "../stylesheets/Signup.css";
 import axios from 'axios';
+import rootbg from '../images/root-img.jpg';
+import Navbar from "../components/navbar"
 
 export default function Signup() {
     const handleSignup = async (event) => {
@@ -44,6 +46,15 @@ export default function Signup() {
     }
     
     return (
+      <div id="SignupPage">
+        <Navbar links = {navElements}/>
+        <div id="SUBackground">
+            <img
+                src={rootbg}
+                alt="peter-wendt-r5-KSMkyo-Sc-unsplash"
+                border="0"
+            />
+        </div>
         <div id="SUBorder">
           <form id="SUForm" onSubmit={handleSignup}>
               <h1 className="SUWelcome">WELCOME TO FARM-TO-TABLE</h1>
@@ -72,5 +83,11 @@ export default function Signup() {
               </button>
           </form>
         </div>
+        </div>
     );
 }
+
+const navElements = [
+  { title: 'Login', path: '/login' },
+  { title: 'Signup', path: '/signup' },
+]

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../stylesheets/Profile.css'; // Assuming you have a CSS file named Profile.css
 import axios from 'axios'; 
 import Navbar from '../components/navbar';
+import rootbg from '../images/profile-img.jpeg';
 
 const getUserData = async (email) => {
     const url = 'http://localhost:3001/get-user-by-email';
@@ -22,6 +23,12 @@ export default function Profile() {
     return (
         <div className="profile-page">
             <Navbar links={navElements} />
+            <div id="ProfileBackground">
+          <img
+                    src={rootbg}
+                    alt="peter-wendt-r5-KSMkyo-Sc-unsplash"
+                    border="0"
+                />
             <div className='profile-container'>
                 <h1>Profile</h1>
                 <div className="profile-details">
@@ -42,6 +49,7 @@ export default function Profile() {
                         <span>{userData.email}</span>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     );

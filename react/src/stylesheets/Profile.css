@@ -1,9 +1,66 @@
+/*----------Background----------*/
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+
+.profile-page{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+#ProfileBackground{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    overflow: hidden;
+    position: relative;
+}
+#ProfileBackground img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+#ProfileBackground::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: -1;
+}
+
+/*----------Border----------*/
 .profile-container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    color: green;
+
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 30%;
+    height: 40%;
+    border-radius: 10px;
+   
 }
 
+
+/*----------ProfileElements----------*/
 .profile-details {
     border: 1px solid #ccc;
     padding: 20px;

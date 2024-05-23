@@ -89,7 +89,7 @@ export default function Home(props) {
             <Navbar links={navElements} />
             <div className="home-body">
                 <div className="cardsHolder">
-                    <h2>Products</h2>
+                    <h2>PRODUCTS</h2>
                     <div className="products">
                         {productList.map((product) => (
                             <ProductCard key={product.productId} product={product} addToCart={addToCart} />
@@ -97,7 +97,7 @@ export default function Home(props) {
                     </div>
                 </div>
                 <div className="cartHolder">
-                    <h2>Cart</h2>
+                    <h2>CART</h2>
                     <div className="cart-items">
                         {cart.map((item) => (
                             <CartItems

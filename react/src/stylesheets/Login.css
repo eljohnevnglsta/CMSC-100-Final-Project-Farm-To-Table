@@ -1,3 +1,45 @@
+/*----------Background----------*/
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+.LoginPage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+#LIBackground {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    position: relative;
+}
+#LIBackground img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+#LIBackground::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: -1;
+}
 #LIBorder{
     display: flex;
     position: absolute;
@@ -5,17 +47,19 @@
     width: 400px; 
     height: 400px;
 
-    margin-left: 10%;
+    margin-left: 0%;
     margin-right: auto;
     
-    margin-top: 150px; 
+    margin-top: 0%; 
 
     border-radius: 30px; 
-    background-color: #FFC72C;
+    /* background-color: rgba(0, 100, 0, 0.9); */
+    background-color: rgba(240, 240, 240, 0.8);
 }  
 
 /*----------Message----------*/
 .LIWelcome{
+    color: green;
     display: flex;
     position: absolute;
 
@@ -26,6 +70,8 @@
     margin-top: 30px; 
 }
 .LICreate{
+    color: green;
+    font-weight: bold;
     display: flex;
     position: absolute;
 
@@ -40,6 +86,8 @@
 
     margin-left: 70px;
     margin-top: 100px; 
+    color: green;
+    font-weight: bold;
 }
 #LIEmail{
     display: flex;
@@ -56,11 +104,13 @@
 
 /*----------Password----------*/
 .LIPassword{
+    color: green;
     display: flex;
     position: absolute;
 
     margin-left: 70px;
-    margin-top: 150px; 
+    margin-top: 150px;
+    font-weight: bold; 
 }
 #LIPassword{
     display: flex;
@@ -88,7 +138,14 @@
     margin-top: 220px; 
 
     border-radius: 10px; 
+    color: green;
+    background-color: yellow;
 }
+
+.LISubmit:hover {
+    background-color:  #e6e600;
+}
+
 .LISubmitText{
     display: flex;
     position: absolute;
@@ -113,6 +170,7 @@
     background-color: black;
 }
 .LICreateAcc{
+    background-color: yellow;
     display: flex;
     position: absolute;
   
@@ -124,6 +182,12 @@
 
     border-radius: 10px; 
 }
+
+.LICreateAcc:hover{
+    background-color:  #e6e600;
+}
+
+
 .LICreateAccText{
     display: flex;
     position: absolute;
@@ -133,4 +197,5 @@
 
     font-size: 20px;
     font-family: impact, sans-serif;
+    color: green;
 }
