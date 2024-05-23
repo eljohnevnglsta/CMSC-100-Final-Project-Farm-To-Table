@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './ProductManagement.css';
+import '../stylesheets/ProductManagement.css';
 
 export default function ProductManagement() {
     const [products, setProducts] = useState([]);
@@ -22,13 +22,13 @@ export default function ProductManagement() {
                 'Content-Type': 'application/json',
             },
         })
-        .then(response => response.json())
-        .then(body => {
-            setProducts(body);
-        })
-        .catch(error => {
-            console.error('Error fetching products:', error);
-        });
+            .then(response => response.json())
+            .then(body => {
+                setProducts(body);
+            })
+            .catch(error => {
+                console.error('Error fetching products:', error);
+            });
     };
 
     const inputChanges = (e) => {
@@ -45,24 +45,24 @@ export default function ProductManagement() {
             },
             body: JSON.stringify(formData),
         })
-        .then(response => response.json())
-        .then(body => {
-            if (body.inserted) {
-                fetchProducts();
-                setFormData({
-                    productId: '',
-                    productName: '',
-                    productDescription: '',
-                    productType: '1',
-                    productQuantity: ''
-                });
-            } else {
-                console.error('Error adding product:', body.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error adding product:', error);
-        });
+            .then(response => response.json())
+            .then(body => {
+                if (body.inserted) {
+                    fetchProducts();
+                    setFormData({
+                        productId: '',
+                        productName: '',
+                        productDescription: '',
+                        productType: '1',
+                        productQuantity: ''
+                    });
+                } else {
+                    console.error('Error adding product:', body.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error adding product:', error);
+            });
     };
 
     return (

@@ -3,18 +3,20 @@
     /* border: 1px solid red; */
     font-family: "Poppins", sans-serif;
 }
-#home-root{
+
+#home-root {
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
 
 /*----------Home/Background----------*/
-.home-body{
+.home-body {
     display: flex;
     flex-direction: row;
 }
-.products{
+
+.products {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -22,32 +24,38 @@
     margin-top: 20px;
     min-width: 50%
 }
-.cartHolder{
+
+.cartHolder {
     min-width: 25%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    padding: 0px 10px;
 }
+
 .card {
     display: flex;
     flex-direction: column;
     margin: 10px;
     padding: 10px;
-    border-radius: 5px;   
-     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     background-color: #fff;
     width: 200px;
-    color: gray; 
+    color: gray;
     text-align: center;
 }
+
 .card:hover {
     background-color: rgba(0, 128, 0, 0.9);
-    color: yellow; 
+    color: yellow;
 }
+
 .status-details {
     margin-left: 20px;
 }
-.PCProductName{
+
+.PCProductName {
     color: darkgreen;
     font-weight: bold;
 }
@@ -57,50 +65,62 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    max-width: fit-content;
+    padding: 10px 0px;
     border-bottom: 1px solid #ddd;
     margin-bottom: 10px;
 }
+
 .cartItem p {
     margin: 0 10px;
 }
+
 .cart-item-quantity {
     display: flex;
     align-items: center;
 }
+
 .cart-item-quantity button {
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     padding: 5px 10px;
     cursor: pointer;
 }
+
 .cart-item-quantity button:hover {
     background-color: #ddd;
 }
+
 .cart-item-quantity div {
     margin: 0 10px;
     width: 30px;
     text-align: center;
 }
+
 .cart-item-quantity .remove-btn {
     margin-left: 10px;
     color: red;
     cursor: pointer;
 }
+
 .cart-item-quantity .decrement-btn {
     margin-right: -10px;
     cursor: pointer;
 }
+
 .cart-item-quantity .increment-btn {
     margin-left: -10px;
     cursor: pointer;
 }
-.cartPrice{
-    margin-left: 20px; 
+
+.cartPrice {
+    margin-left: 20px;
 }
+
 .cart-item-quantity .remove-btn:hover {
     text-decoration: underline;
 }
+
 .cartItem p:last-child {
     font-weight: bold;
     margin-left: auto;
@@ -118,33 +138,35 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
-    color: green; 
+    color: green;
 }
+
 .card button:hover {
-    background-color: #e6e600; 
+    background-color: #e6e600;
 }
-.cardsHolder h2{
+
+.cardsHolder h2 {
     color: green;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    font-weight: bold; 
+    align-items: center;
+    font-weight: bold;
 }
+
 .cartHolder h2 {
-    color: white; 
-    background-color: rgba(0, 0, 0, 0.8); 
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    max-width: fill;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    width: 100%;
-    padding: 10px; 
+    align-items: center;
 }
 
 /*----------Button----------*/
 #checkout-btn {
     background-color: green;
     border: none;
-    color: black; 
+    color: black;
     padding: 10px 20px;
     text-align: center;
     display: inline-block;
@@ -152,12 +174,13 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
-    color: yellow; 
+    color: yellow;
 }
+
 #save-cart {
     background-color: green;
     border: none;
-    color: black; 
+    color: black;
     padding: 10px 20px;
     text-align: center;
     display: inline-block;
@@ -165,18 +188,21 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
-    color: yellow; 
+    color: yellow;
 }
+
 #checkout-btn:hover {
-    background-color: darkgreen; 
+    background-color: darkgreen;
 }
+
 #save-cart:hover {
-    background-color: darkgreen; 
+    background-color: darkgreen;
 }
-.cancel-btn{
+
+.cancel-btn {
     background-color: Gray;
     border: none;
-    color: white; 
+    color: white;
     padding: 10px 20px;
     text-align: center;
     display: inline-block;
@@ -185,7 +211,8 @@
     cursor: pointer;
     border-radius: 5px;
 }
-.cancel-btn:hover{
+
+.cancel-btn:hover {
     background-color: red;
     color: Yellow;
 }

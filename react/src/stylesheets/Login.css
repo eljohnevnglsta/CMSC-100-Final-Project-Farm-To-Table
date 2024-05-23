@@ -1,10 +1,4 @@
 /*----------Background----------*/
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-  }
 .LoginPage {
     display: flex;
     flex-direction: column;

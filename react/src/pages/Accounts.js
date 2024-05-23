@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './UserManagement.css';
+import '../stylesheets/UserManagement.css';
 
 export default function UserManagement() {
   const [users, setUsers] = useState([]);
@@ -53,14 +53,14 @@ export default function UserManagement() {
         <h2>Total Users</h2>
         <p>{totalUsers}</p>
       </div>
-      
+
       <div className="user-list">
         <div className="table-header">
-          <p style={{paddingLeft: '20px'}}>Name</p>
+          <p style={{ paddingLeft: '20px' }}>Name</p>
           <p>Products Ordered</p>
-          <p style={{paddingRight: '300px'}}>Date Joined</p>
+          <p style={{ paddingRight: '300px' }}>Date Joined</p>
         </div>
-        
+
         {users.map((user, i) => (
           <div key={i} className="user-item">
             <p style={{ paddingLeft: '20px' }}>{user.firstName}</p>
