@@ -1,0 +1,34 @@
+.user-management-container {
+    width: 80%;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+.total-users {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    /* border-radius: 10px;  */
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 1px;
+    font-weight: bold;
+    /* border-radius: 10px; */
+}
+
+.user-item {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 10px;
+    /* border-radius: 10px;  */
+}
+
+.user-item p {
+    flex: 1;
+    padding: 0 10px;
+}
