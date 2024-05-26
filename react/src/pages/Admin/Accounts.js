@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import '../stylesheets/UserManagement.css';
+import '../../stylesheets/Admin/UserManagement.css';
+import Navbar from '../../components/navbar';
 
 export default function UserManagement() {
   const [users, setUsers] = useState([]);
@@ -48,7 +49,9 @@ export default function UserManagement() {
   };
 
   return (
-    <div className="user-management-container">
+    <div>
+      <Navbar links = {navElements}/>
+      <div className="user-management-container">
       <div className="total-users">
         <h2>Total Users</h2>
         <p>{totalUsers}</p>
@@ -71,5 +74,14 @@ export default function UserManagement() {
         ))}
       </div>
     </div>
+    </div>
+
   );
 }
+
+const navElements = [
+  { title: 'Product Management', path: '/admin' },
+  { title: 'Order Management', path: '/order-management' },
+  { title: 'Sales Report', path: '/sales-report' },
+  { title: 'Profile', path: '/profile' },
+]

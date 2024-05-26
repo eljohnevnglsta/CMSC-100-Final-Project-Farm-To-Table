@@ -44,7 +44,7 @@ body, html {
 
 /*----------Border----------*/
 .profile-container {
-    max-width: 600px;
+    min-width: 600px;
     margin: 0 auto;
     padding: 20px;
     background: rgba(255, 255, 255, 0.9);
@@ -84,4 +84,15 @@ body, html {
 
 .field:last-child {
     margin-bottom: 0;
+}
+
+#logoutbutton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 10px ;
+    cursor: pointer;
+    width: 100%;
 }

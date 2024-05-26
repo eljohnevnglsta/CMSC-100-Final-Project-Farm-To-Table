@@ -1,0 +1,63 @@
+/* Sales report styles */
+.sales-report-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.sales-report-heading {
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.timeframe-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.timeframe-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.timeframe-button:hover {
+    background-color: #218838;
+}
+
+.sales-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.sales-table th, .sales-table td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+}
+
+.sales-table th {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.sales-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.total-income {
+    color: #343a40;
+    margin-top: 20px;
+    text-align: center;
+}

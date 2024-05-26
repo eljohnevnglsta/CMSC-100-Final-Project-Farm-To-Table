@@ -35,17 +35,15 @@ html {
   height: 50px;
 }
 
-
 .root-label {
   display: flex;
-  width: 13vw;
-  justify-content: space-between;
+  width: 50%;
   flex-direction: row;
   align-items: center;
 }
 
 .root-nav-name {
-  padding-right: fill;
+  padding-left: 20px;
   font-size: 1.5rem;
   font-weight: bold;
 }

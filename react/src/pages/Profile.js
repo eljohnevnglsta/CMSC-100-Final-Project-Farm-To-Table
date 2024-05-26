@@ -13,8 +13,13 @@ const getUserData = async (email) => {
         console.error('Error:', error);
         return null;
     }
-
 }
+
+const handleLogout = async () => {
+    axios.post('http://localhost:3001/logout');
+    sessionStorage.removeItem('user');
+    window.location.href = '/login';
+} 
 
 const email = JSON.parse(sessionStorage.getItem('user'));
 const userData = await getUserData(email);
@@ -22,7 +27,7 @@ const userData = await getUserData(email);
 export default function Profile() {
     return (
         <div className="profile-page">
-            <Navbar links={navElements} />
+            <Navbar links={userData.userType == "customer" ? navElements : navElements2} />
             <div id="ProfileBackground">
           <img
                     src={rootbg}
@@ -49,6 +54,7 @@ export default function Profile() {
                         <span>{userData.email}</span>
                     </div>
                 </div>
+                <button id='logoutbutton' onClick={handleLogout}> Logout </button>
             </div>
             </div>
         </div>
@@ -59,3 +65,10 @@ const navElements = [
     { title: 'Home', path: '/home' },
     { title: 'Orders', path: '/orders' }
 ];
+
+const navElements2 = [
+    { title: 'Product Management', path: '/admin' },
+    { title: 'User Management', path: '/user-management' },
+    { title: 'Sales Report', path: '/sales-report' },
+    { title: 'Order Management', path: '/order-management' },
+]; 

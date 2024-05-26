@@ -1,5 +1,6 @@
 import { User } from "../controllers/UserController.js";
 import { Order } from "../controllers/OrderController.js";
+import { Product } from "../controllers/ProductController.js";
 import { hashPassword, generateToken, comparePassword } from "./auth.js";
 
 function isValidEmail(email) {
@@ -119,6 +120,13 @@ export const checkout = async (req, res) => {
         const cart = existingUser.shoppingCart; 
         
         for (let i = 0; i < cart.length; i++) {
+            const product = await Product.findOne({productId: cart[i].productId});
+            
+            if (product.productQuantity < cart[i].quantity) {
+                res.send({ status: false, message: "Product " + product.productName + " has insufficient of stock" });
+                continue;
+            }
+
             let order = {
                 transactionId: index,
                 productId: cart[i].productId,
@@ -128,6 +136,7 @@ export const checkout = async (req, res) => {
                 dateOrdered: Date.now(),
                 time: new Date().toLocaleTimeString()
             }
+
             index++;
             let newOrder = new Order(order);
             await newOrder.save();

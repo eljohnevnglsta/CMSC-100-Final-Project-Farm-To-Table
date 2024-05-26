@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
-import '../stylesheets/ProductManagement.css';
+import '../../stylesheets/Admin/ProductManagement.css';
+import axios from 'axios';
 
 export default function ProductManagement() {
     const [products, setProducts] = useState([]);
     const [formData, setFormData] = useState({
         productId: '',
         productName: '',
+        productImage: '',
         productDescription: '',
-        productType: '1', // default to 'Crop'
-        productQuantity: ''
+        productType: 1, // default to 'Crop'
+        productQuantity: 0
     });
 
     useEffect(() => {
@@ -36,44 +38,48 @@ export default function ProductManagement() {
         setFormData({ ...formData, [name]: value }); //state updater function for the formData state
     };                //creates a copy of the current formData state    
 
-    const formSubmission = (e) => {
+    const formSubmission = async (e) => {
         e.preventDefault();
-        fetch('http://localhost:3001/add-product', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        })
-            .then(response => response.json())
-            .then(body => {
-                if (body.inserted) {
-                    fetchProducts();
-                    setFormData({
-                        productId: '',
-                        productName: '',
-                        productDescription: '',
-                        productType: '1',
-                        productQuantity: ''
-                    });
-                } else {
-                    console.error('Error adding product:', body.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error adding product:', error);
+        const response = await axios.post('http://localhost:3001/add-product', formData)
+        if (response.data.inserted) {
+            fetchProducts();
+            setFormData({
+                productId: '',
+                productName: '',
+                productImage: '',
+                productDescription: '',
+                productType: 1,
+                productQuantity: 0
             });
-    };
+        } 
+        console.log(response.data);
 
+    }
+
+    const handleProductDeletion = async (e) => {
+        const productId = e.target.parentElement.querySelector('p').textContent.split(' ')[1];
+        const response = await axios.post('http://localhost:3001/delete-product', { productId });
+        if (response.data.deletedCount > 0) {
+            fetchProducts();
+        } else {
+            console.error('Failed to delete product');
+        }
+
+        console.log(response.data);
+    }
     return (
         <div className="product-management-container">
             <div className="product-items-container">
                 {products.map(product => (
                     <div key={product.productId} className="product-item">
+                        <img src={product.productImage} alt={product.productName} />
                         <h2>{product.productName}</h2>
+                        <p>ID: {product.productId}</p>
                         <p>Description: {product.productDescription}</p>
+                        <p>Price: ${product.productPrice}</p>
                         <p>Type: {product.productType === 1 ? 'Crop' : 'Poultry'}</p>
                         <p>Quantity: {product.productQuantity}</p>
+                        <button id='adminDeleteProductButton' onClick={handleProductDeletion}>Delete</button>
                     </div>
                 ))}
             </div>
@@ -102,10 +108,30 @@ export default function ProductManagement() {
                         />
                     </div>
                     <div>
+                        <label>Product Image (URL):</label>
+                        <input
+                            type="text"
+                            name="productImage"
+                            value={formData.productImage}
+                            onChange={inputChanges}
+                            required
+                        />
+                    </div>
+                    <div>
                         <label>Product Description:</label>
                         <textarea
                             name="productDescription"
                             value={formData.productDescription}
+                            onChange={inputChanges}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Product Price:</label>
+                        <input
+                            type="number"
+                            name="productPrice"
+                            value={formData.productPrice}
                             onChange={inputChanges}
                             required
                         />

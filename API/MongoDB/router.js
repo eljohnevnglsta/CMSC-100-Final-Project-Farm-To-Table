@@ -3,7 +3,7 @@ import { addSold, getSoldByProductId, deleteSold,showAllSold, updateSoldDetails 
 import { addNewProduct, getProductByID, updateProductDetails, deleteProduct, showAllProducts } from "./controllers/ProductController.js"
 import { addOrder, getOrderByTransactionId, updateOrder, deleteOrder, showAllOrderFromAUser, showAllOrders } from "./controllers/OrderController.js";
 import { signup, login, logout, checkout, cancelOrder, updatedCartItems } from "./actions/customer.js";
-import { approval } from "./actions/admin.js";
+import { approval, disapproval } from "./actions/admin.js";
 //sends the function logic from controller to the server
 
 const router = (app) => {
@@ -41,6 +41,7 @@ const router = (app) => {
 
     //admin endpoints
     app.post('/approval', approval);
+    app.post('/disapproval', disapproval);
 
     // sold products
     app.post('/get-sold-by-product-id', getSoldByProductId);

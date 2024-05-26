@@ -1,0 +1,84 @@
+#ApprovalPage * {
+    /* border : 1px solid red; */
+}
+
+#approval-page-body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+#previous-orders-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 50%;
+}
+
+.order-card {
+    display: flex; /* Use flexbox for horizontal layout */
+    flex-direction: row;
+    align-items: center; /* Center items vertically */
+    border: 1px solid #ddd; /* Light border around the card */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Space inside the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 500px; /* Fixed width for the card */
+    margin: 10px auto; /* Center the card horizontally and add vertical spacing */
+    background-color: #fff; /* White background for the card */
+    justify-content: space-evenly;
+}
+
+.order-card img {
+    width: 80px; /* Fixed width for the image */
+    height: 80px; /* Fixed height for the image */
+    border-radius: 4px; /* Slightly rounded corners for the image */
+    margin-right: 16px; /* Space between the image and the text */
+}
+
+.order-card .text-container {
+    display: flex; /* Use flexbox for the text container */
+    flex-direction: column; /* Stack text elements vertically */
+    justify-content: space-between; /* Distribute space evenly */
+    height: 100%; /* Fill the height of the card */
+}
+
+.order-card p {
+    margin: 0; /* Remove default margin */
+    font-size: 14px; /* Font size for the text */
+    color: #333; /* Dark gray color for the text */
+}
+
+.order-card p:nth-of-type(1) {
+    font-weight: bold; /* Bold the product name */
+    font-size: 16px; /* Slightly larger font size for the product name */
+}
+
+.order-card p:nth-of-type(3) {
+    color: #555; /* Slightly lighter color for the email */
+    font-size: 12px; /* Smaller font size for the email */
+}
+
+#order-details{
+    width: 300px;    
+}
+
+.order-buttons {
+    display: flex;
+  }
+  
+  .order-buttons button {
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .order-buttons button:hover {
+    background-color: #0056b3;
+  }

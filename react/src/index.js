@@ -10,11 +10,11 @@ import SignUp from './pages/Signup';
 import Home from './pages/Home';
 import Orders from './pages/Order';
 import Profile from './pages/Profile';
-import Admin from './pages/AdminHome';
-import ProductManagement from './pages/ManageProducts';
-// import SalesReport from './pages/Admin/SalesReport';
-// import AdminApproval from './pages/Admin/AdminApproval';
-import UserManagement from './pages/Accounts';
+import Admin from './pages/Admin/AdminHome';
+import ProductManagement from './pages/Admin/ManageProducts';
+import OrderManagement from './pages/Admin/OrderManagement';
+import SalesReport from './pages/Admin/SalesReport';
+import UserManagement from './pages/Admin/Accounts';
 
 const router = createBrowserRouter([
   { path: '/', element: <Root /> },
@@ -23,11 +23,13 @@ const router = createBrowserRouter([
   { path: '/home', element: <Home /> },
   { path: '/orders', element: <Orders /> },
   { path: '/profile', element: <Profile /> },
+
+  //admin pages
   { path: '/admin', element: <Admin /> },
-  // { path: '/sales', element: <SalesReport /> },
+  { path: '/sales-report', element: <SalesReport /> },
   { path: '/products', element: <ProductManagement /> },
-  { path: '/users', element: <UserManagement /> },
-  // { path: '/approval', element: <AdminApproval /> }
+  { path: '/user-management', element: <UserManagement /> },
+  { path: '/order-management', element: <OrderManagement /> }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
