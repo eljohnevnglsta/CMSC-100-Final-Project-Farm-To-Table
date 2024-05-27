@@ -48,13 +48,13 @@ export default function Signup() {
     return (
       <div id="SignupPage">
         <Navbar links = {navElements}/>
-        <div id="SUBackground">
+        {/* <div id="SUBackground">
             <img
                 src={rootbg}
                 alt="peter-wendt-r5-KSMkyo-Sc-unsplash"
                 border="0"
             />
-        </div>
+        </div> */}
         <div id="SUBorder">
           <form id="SUForm" onSubmit={handleSignup}>
               <h1 className="SUWelcome">WELCOME TO FARM-TO-TABLE</h1>
@@ -83,7 +83,7 @@ export default function Signup() {
               </button>
           </form>
         </div>
-        </div>
+      </div>
     );
 }
 

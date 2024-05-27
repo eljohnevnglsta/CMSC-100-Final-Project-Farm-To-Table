@@ -1,19 +1,34 @@
 /*----------Background----------*/
-body, html {
+#SignupPage, #SignupPage html, #SignupPage body {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
-  }
+    background-image: url('../images/root-img.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+#SignupPage::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
 
-#SignupPage{
+#SignupPage {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    overflow: hidden;
+    overflow: auto;
     position: relative;
+    z-index: 2;
 }
-#SUBackground {
+/* #SUBackground {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,8 +55,10 @@ body, html {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: -1;
+} */
+#SignupPage::-webkit-scrollbar { /* hides scrollbar */
+    display: none;
 }
-
 /*----------SignUpBorder----------*/
 #SUBorder{
     display: flex;
@@ -53,14 +70,16 @@ body, html {
 
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-    margin-top: 5%; 
+    margin-top: 8%;
+    scroll-margin: 20px;
 
-    width: 400px; 
+    width: 50%;
+    max-width: 400px; 
     height: 630px; 
     
-    border-radius: 30px; 
+    border-radius: 30px;
     background-color: rgba(240, 240, 240, 0.8);
+    z-index: 3;
 }   
 .SUWelcome{
     color: green;
@@ -234,7 +253,7 @@ body, html {
     height: 40px;
     
     margin-left: 100px;
-    margin-top: 420px; 
+    margin-top: 450px; 
 
     border-radius: 10px; 
     background-color: yellow;
@@ -253,4 +272,5 @@ body, html {
 
 .SUSubmit:hover {
     background-color:  #e6e600;
+    cursor: pointer;
 }
