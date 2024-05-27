@@ -47,6 +47,11 @@ const SalesReport = () => {
     }, [orders, products, timeFrame]);
 
     const generateReport = () => {
+        if (!orders || !products) {
+            // orders or products are not yet available, do nothing
+            return;
+        }
+
         console.log(`Generating report for timeframe: ${timeFrame}`);
         const now = new Date();
         const filteredOrders = orders.filter(order => {

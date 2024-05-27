@@ -41,7 +41,7 @@ function AdminApproval(){
 
     const handleApprove = async (transactionId) => {
         try {
-            const response = axios.post("http://localhost:3001/approval", { transactionId: transactionId })
+            const response = await axios.post("http://localhost:3001/approval", { transactionId: transactionId })
             console.log(response.data);
             if (response.data.status === false) {
                 console.error(response.data.message);
@@ -57,7 +57,7 @@ function AdminApproval(){
     
     const handleCancel = async (transactionId) => {
         try {
-            const response = axios.post("http://localhost:3001/disapproval", { transactionId: transactionId })
+            const response = await axios.post("http://localhost:3001/disapproval", { transactionId: transactionId })
 
             if (response.data.status === false) {
                 console.error(response.data.message);
