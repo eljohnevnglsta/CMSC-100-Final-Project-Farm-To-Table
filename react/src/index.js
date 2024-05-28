@@ -15,6 +15,7 @@ import ProductManagement from './pages/Admin/ManageProducts';
 import OrderManagement from './pages/Admin/OrderManagement';
 import SalesReport from './pages/Admin/SalesReport';
 import UserManagement from './pages/Admin/Accounts';
+import UserDetails from './pages/Admin/UserDetails';
 
 const router = createBrowserRouter([
   { path: '/', element: <Root /> },
@@ -29,8 +30,10 @@ const router = createBrowserRouter([
   { path: '/sales-report', element: <SalesReport /> },
   { path: '/products', element: <ProductManagement /> },
   { path: '/user-management', element: <UserManagement /> },
-  { path: '/order-management', element: <OrderManagement /> }
-])
+  { path: '/user-management/:email', element: <UserDetails /> },
+  { path: '/order-management', element: <OrderManagement /> },
+
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -2,30 +2,73 @@
     width: 80%;
     margin: 0 auto;
     font-family: sans-serif;
+    
+}
+
+.header {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h2 {
+    margin: 0;
+    color: #333;
+}
+
+.header p {
+    margin: 5px 0 0;
+    color: #666;
+    
 }
 
 .total-users {
     border: 1px solid #ccc;
     padding: 20px;
-    margin-bottom: 20px;
-    /* border-radius: 10px;  */
+    border-bottom: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.search-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 40px;
+    
+}
+
+.user-list {
+    border: 1px solid #ccc;
+    border-top: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+}
+
+.table-header, .user-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px;
+    border-bottom: 1px solid #ccc;
+    align-items: center;
 }
 
 .table-header {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #ccc;
-    padding: 1px;
+    background-color: #f7f7f7;
     font-weight: bold;
-    /* border-radius: 10px; */
+    border-top: 1px solid #ccc; /* Adds a line above the headers */
 }
 
-.user-item {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #ccc;
-    padding: 10px;
-    /* border-radius: 10px;  */
+.user-item:last-child {
+    border-bottom: none;
 }
 
 .user-item p {
@@ -33,4 +76,16 @@
     padding: 0 10px;
 }
 
+.delete-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 60px;
+}
 
+.delete-button:hover {
+    background-color: #c0392b;
+}
