@@ -1,10 +1,20 @@
 import axios from 'axios';
 import "../stylesheets/Login.css";
 import rootbg from '../images/root-img.jpg';
-import Navbar from "../components/navbar"
+import Navbar from "../components/navbar";
+import useAuth from '../hooks/useauth';
+import AuthContext from '../context/authprovider';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
 
 export default function Login(props) {
-    
+    const { auth, setAuth } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/home";
+    const from2 = location.state?.from?.pathname || "/admin";
+
     const handleLogIn = async (event) => {
         event.preventDefault(); // Prevent default form submission
     
@@ -14,11 +24,35 @@ export default function Login(props) {
           password: document.getElementById('LIPassword').value,
         };
 
+        const url2 = 'http://localhost:3001/get-user-by-email'
+        const data2 = {
+          email: document.getElementById('LIEmail').value
+        };
+
         var status = false;
         try {
           const response = await axios.post(url, data);  // Await the response
           console.log(response.data);
           status = response.data.status;
+
+          const response2 = await axios.post(url2, data);
+          const roles2 = response2.data.userType;
+          JSON.stringify(roles2);
+          console.log(roles2);
+
+          var roles = [];
+          if(roles2 == 'customer')
+            {
+              roles = [1];
+              navigate(from, { replace: true });
+            }
+          if(roles2 == 'admin')
+            {
+              roles = [2];
+              navigate(from2, { replace: true });
+            }
+          setAuth({roles: roles});
+
         } catch (error) {
           console.error('Error:', error);
         }
@@ -34,19 +68,23 @@ export default function Login(props) {
           try {
             const findUser = await axios.post('http://localhost:3001/get-user-by-email', data);
             user = findUser.data;
-            sessionStorage.setItem('user', JSON.stringify(user.email));
+            sessionStorage.setItem("user", JSON.stringify(user.email));
           } catch (error) {
             console.error('Error:', error);
           }
-          
-          window.location.href = '/home';
       };
+
+      useEffect(()=> { 
+        console.log("clicked", auth);
+      },[auth]);
     
       const createAccount = (event) => {
         event.preventDefault();
         window.location.href = '/signup';
       };
     
+
+      //======================================================================================================
       return (
         <div className='LoginPage'>
           <Navbar links = {navElements}/>

@@ -1,4 +1,5 @@
 import rootlogo from '../images/logo.jpg';
+import { Link } from 'react-router-dom';
 
 export default function Navbar(props) {
     return (
@@ -13,7 +14,7 @@ export default function Navbar(props) {
             </div>
             <div className="root-nav-links">
                 {props.links.map((link) => (
-                    <a href={link.path}>{link.title}</a>
+                    <Link to={link.path}>{link.title}</Link>
                 ))}
             </div>
         </nav>

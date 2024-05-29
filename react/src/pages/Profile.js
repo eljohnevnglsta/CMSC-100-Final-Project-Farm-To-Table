@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../stylesheets/Profile.css'; // Assuming you have a CSS file named Profile.css
 import axios from 'axios'; 
 import Navbar from '../components/navbar';
 import rootbg from '../images/profile-img.jpeg';
+import AuthContext from '../context/authprovider';
+import { useNavigate } from 'react-router-dom';
 
 const getUserData = async (email) => {
     const url = 'http://localhost:3001/get-user-by-email';
+    
     try {
         const response = await axios.post(url, { email: email });
         return response.data;
@@ -15,16 +18,20 @@ const getUserData = async (email) => {
     }
 }
 
-const handleLogout = async () => {
-    axios.post('http://localhost:3001/logout');
-    sessionStorage.removeItem('user');
-    window.location.href = '/login';
-} 
-
 const email = JSON.parse(sessionStorage.getItem('user'));
 const userData = await getUserData(email);
 
 export default function Profile() {
+    const navigate = useNavigate();
+    const { setAuth } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        axios.post('http://localhost:3001/logout');
+        sessionStorage.removeItem("user");
+        setAuth({});
+        navigate('/login');
+    } 
+
     return (
         <div className="profile-page">
             <Navbar links={userData.userType == "customer" ? navElements : navElements2} />

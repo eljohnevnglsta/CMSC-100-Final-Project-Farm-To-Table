@@ -23,7 +23,7 @@ const addUser = async (req, res) => {
 
 const getUserbyEmail = async (req, res) => {
     const user = await User.findOne({email: req.body.email})
-    res.send(user);;
+    res.send(user);
 }
 
 const updateUserDetails = async (req, res) => {

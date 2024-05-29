@@ -26,5 +26,4 @@ export default function Root() {
 const navElements = [
     { title: 'Login', path: '/login' },
     { title: 'Signup', path: '/signup' },
-    { title: 'Admin View', path: '/admin' },
 ]
