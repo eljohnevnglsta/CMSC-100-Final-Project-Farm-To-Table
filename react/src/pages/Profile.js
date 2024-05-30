@@ -23,18 +23,18 @@ const userData = await getUserData(email);
 
 export default function Profile() {
     const navigate = useNavigate();
-    const { setAuth } = useContext(AuthContext);
+    const { auth, setAuth } = useContext(AuthContext);
 
     const handleLogout = () => {
         axios.post('http://localhost:3001/logout');
-        sessionStorage.removeItem("user");
+        sessionStorage.clear();
         setAuth({});
         navigate('/login');
     } 
 
     return (
         <div className="profile-page">
-            <Navbar links={userData.userType == "customer" ? navElements : navElements2} />
+            <Navbar links={auth.userType == "customer" ? navElements : navElements2} />
             <div id="ProfileBackground">
           <img
                     src={rootbg}
@@ -46,19 +46,19 @@ export default function Profile() {
                 <div className="profile-details">
                     <div className="field">
                         <label>First Name:</label>
-                        <span>{userData.firstName}</span>
+                        <span>{auth.fname}</span>
                     </div>
                     <div className="field">
                         <label>Middle Name:</label>
-                        <span>{userData.middleName}</span>
+                        <span>{auth.mname}</span>
                     </div>
                     <div className="field">
                         <label>Last Name:</label>
-                        <span>{userData.lastName}</span>
+                        <span>{auth.lname}</span>
                     </div>
                     <div className="field">
                         <label>Email:</label>
-                        <span>{userData.email}</span>
+                        <span>{auth.email}</span>
                     </div>
                 </div>
                 <button id='logoutbutton' onClick={handleLogout}> Logout </button>

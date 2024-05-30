@@ -57,7 +57,9 @@ const productList = await getProducts();
 const initialCart = userData.shoppingCart;
 
 export default function Home(props) {
-    const [cart, setCart] = useState(initialCart);
+    const userD = userData;
+    const initCart = userD.shoppingCart;
+    const [cart, setCart] = useState(initCart);
 
     const addToCart = (product) => {
         setCart((prevCart) => {

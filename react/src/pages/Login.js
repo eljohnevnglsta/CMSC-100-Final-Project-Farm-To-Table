@@ -35,9 +35,32 @@ export default function Login(props) {
           console.log(response.data);
           status = response.data.status;
 
+        } catch (error) {
+          console.error('Error:', error);
+        }
+
+        delete data.password;
+        var user = {};
+        try {
+          const findUser = await axios.post('http://localhost:3001/get-user-by-email', data);
+          user = findUser.data;
+          sessionStorage.setItem("user", JSON.stringify(user.email));
+        } catch (error) {
+          console.error('Error:', error);
+        }
+
+        try{
           const response2 = await axios.post(url2, data);
           const roles2 = response2.data.userType;
+          const uemail = response2.data.email;
+          const ufname = response2.data.firstName;
+          const umname = response2.data.middleName;
+          const ulname = response2.data.lastName;
           JSON.stringify(roles2);
+          JSON.stringify(uemail);
+          JSON.stringify(ufname);
+          JSON.stringify(umname);
+          JSON.stringify(ulname);
           console.log(roles2);
 
           var roles = [];
@@ -51,9 +74,9 @@ export default function Login(props) {
               roles = [2];
               navigate(from2, { replace: true });
             }
-          setAuth({roles: roles});
-
-        } catch (error) {
+          setAuth({roles: roles, email: uemail, fname: ufname, mname: umname, lname: ulname, userType: roles2});
+        }
+        catch (error){
           console.error('Error:', error);
         }
     
@@ -61,16 +84,6 @@ export default function Login(props) {
           if (!status){
             alert('Invalid email or password');
             return;
-          }
-
-          delete data.password;
-          var user = {};
-          try {
-            const findUser = await axios.post('http://localhost:3001/get-user-by-email', data);
-            user = findUser.data;
-            sessionStorage.setItem("user", JSON.stringify(user.email));
-          } catch (error) {
-            console.error('Error:', error);
           }
       };
 
