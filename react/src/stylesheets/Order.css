@@ -16,6 +16,7 @@
 .status-card {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .status-card {
@@ -41,4 +42,10 @@
 .status-card-date {
     color: #666;
     font-size: 0.9rem;
+}
+
+.status-card-img-text{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

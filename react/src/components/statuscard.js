@@ -47,19 +47,23 @@ export default function StatusCard(props) {
 
     return (
         <div className="status-card">
-            <img src={productData.image} alt={productData.name} className="status-card-image" />
-            <div className='status-details'>
-                <div className="status-card-name">
-                    {productData.name}
-                </div>
-                <div className="status-card-quantity">
-                    QTY: {item.orderQuantity}
-                </div>
-                <div className="status-card-date">
-                    {convertToPhilippineTime(item.dateOrdered).toLocaleString()}
+            <div className='status-card-img-text'>
+                <img src={productData.image} alt={productData.name} className="status-card-image" />
+                <div className='status-details'>
+                    <div className="status-card-name">
+                        {productData.name ? productData.name : 'Deleted Product'}
+                    </div>
+                    <div className="status-card-quantity">
+                        QTY: {item.orderQuantity}
+                    </div>
+                    <div className="status-card-date">
+                        {convertToPhilippineTime(item.dateOrdered).toLocaleString()}
+                    </div>
                 </div>
             </div>
-
+            <div>
+                {props.isPending && props.button}
+            </div>
         </div>
     );
 }

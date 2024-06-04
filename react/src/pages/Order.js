@@ -33,7 +33,7 @@ export default function Order(props) {
     const [cancelledOrders, setCancelledOrders] = useState([]);
 
     useEffect(() => {
-        const email = JSON.parse(sessionStorage.getItem('user'));
+        const email = JSON.parse(localStorage.getItem('user'));
         getOrderByUser(email)
             .then(orders => {
                 const cancelled = orders.filter(order => order.orderStatus === 2);
@@ -54,8 +54,9 @@ export default function Order(props) {
                 <h1>Pending Orders</h1>
                 {pendingOrders.map(order => 
                 <div key={order.transactionId}>
-                    <StatusCard item={order}/>
-                    <button class="cancel-btn" onClick={() => cancelOrder(order.transactionId, pendingOrders, setPendingOrders, setCancelledOrders)}>Cancel Order</button>
+                    <StatusCard item={order} isPending = {true} 
+                    button = {<button class="cancel-btn" onClick={() => cancelOrder(order.transactionId, pendingOrders, setPendingOrders, setCancelledOrders)}>X</button>}
+                    />
                 </div>
                 )}
             </div>

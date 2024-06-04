@@ -1,6 +1,6 @@
 import Navbar from "../components/navbar"
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductCard from "../components/productcard";
 import CartItems from "../components/cartitems";    
 import "../stylesheets/Home.css";
@@ -51,12 +51,24 @@ const checkout = async (email) => {
     }
 }
 
-const email = JSON.parse(sessionStorage.getItem('user'));
-const userData = await getUserData(email);
-const productList = await getProducts();
-const initialCart = userData.shoppingCart;
-
 export default function Home(props) {
+
+    const email = JSON.parse(localStorage.getItem('user'));
+    const [productList, setProductList] = useState([]);
+    const [initialCart, setInitialCart] = useState([]);
+    const [userData, setUserData] = useState({});
+
+    useEffect(() => {
+        async function fetchData() {
+            const products = await getProducts();
+            const user = await getUserData(email);
+            setProductList(products);
+            setInitialCart(user.shoppingCart);
+            setUserData(user);
+        }
+        fetchData();
+    });
+
     const [cart, setCart] = useState(initialCart);
 
     const addToCart = (product) => {

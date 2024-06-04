@@ -34,12 +34,16 @@ export default function Login(props) {
           try {
             const findUser = await axios.post('http://localhost:3001/get-user-by-email', data);
             user = findUser.data;
-            sessionStorage.setItem('user', JSON.stringify(user.email));
+            localStorage.setItem('user', JSON.stringify(user.email));
           } catch (error) {
             console.error('Error:', error);
           }
           
-          window.location.href = '/home';
+          if (user.userType === 'admin'){
+            window.location.href = '/admin';
+          } else {
+            window.location.href = '/home';
+          }
       };
     
       const createAccount = (event) => {

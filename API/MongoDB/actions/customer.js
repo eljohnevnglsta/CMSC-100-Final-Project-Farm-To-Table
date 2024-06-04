@@ -122,16 +122,17 @@ export const checkout = async (req, res) => {
         for (let i = 0; i < cart.length; i++) {
             const product = await Product.findOne({productId: cart[i].productId});
             
+            var status = 0;
             if (product.productQuantity < cart[i].quantity) {
-                res.send({ status: false, message: "Product " + product.productName + " has insufficient of stock" });
-                continue;
+                // res.send({ status: false, message: "Product " + product.productName + " has insufficient of stock" });
+                status = 2;
             }
 
             let order = {
                 transactionId: index,
                 productId: cart[i].productId,
                 orderQuantity: cart[i].quantity,
-                orderStatus: 0,
+                orderStatus: status,
                 email: email,
                 dateOrdered: Date.now(),
                 time: new Date().toLocaleTimeString()

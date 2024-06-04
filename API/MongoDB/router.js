@@ -4,6 +4,7 @@ import { addNewProduct, getProductByID, updateProductDetails, deleteProduct, sho
 import { addOrder, getOrderByTransactionId, updateOrder, deleteOrder, showAllOrderFromAUser, showAllOrders } from "./controllers/OrderController.js";
 import { signup, login, logout, checkout, cancelOrder, updatedCartItems } from "./actions/customer.js";
 import { approval, disapproval } from "./actions/admin.js";
+import { verifyToken } from "./actions/auth.js";
 //sends the function logic from controller to the server
 
 const router = (app) => {
