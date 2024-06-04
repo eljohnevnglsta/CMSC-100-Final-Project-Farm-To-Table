@@ -145,12 +145,22 @@
     background-color: #e6e600;
 }
 
+.cardsHolder{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
 .cardsHolder h2 {
     color: green;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-weight: bold;
+    
 }
 
 .cartHolder h2 {
@@ -216,3 +226,69 @@
     background-color: red;
     color: Yellow;
 }
+
+.card-grayed-out {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #ffb8b8;
+    width: 200px;
+    color: gray;
+    text-align: center;
+}
+
+/* General styling for the sort-options div */
+.sort-options {
+    display: flex;
+    flex-direction: row; /* Change to row for horizontal layout */
+    gap: 20px; /* Add space between each item */
+    padding: 20px; /* Add padding inside the container */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Round the corners */
+    background-color: #f9f9f9; /* Light background color */
+    width: auto; /* Allow full width */
+    align-items: center; /* Center items vertically */
+}
+
+/* Styling for each paragraph inside sort-options */
+.sort-options p {
+    margin: 0; /* Remove default margin */
+    font-weight: bold; /* Make the text bold */
+    padding-right: 10px; /* Add padding to the right for spacing */
+}
+
+/* Styling for the select elements */
+.sort-options select {
+    padding: 8px; /* Add some padding for better appearance */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Slightly round the corners */
+    background-color: #fff; /* White background */
+    font-size: 14px; /* Adjust font size */
+}
+
+/* Styling for the button-group class if needed */
+.button-group {
+    display: flex;
+    align-items: center;
+}
+
+/* Optional: Responsive adjustments */
+@media (max-width: 600px) {
+    .sort-options {
+        flex-direction: column; /* Switch to column layout on smaller screens */
+        gap: 10px; /* Adjust gap for smaller screens */
+    }
+}
+
+#home-show-all{
+    border-radius: 10px;
+}
+
+#home-show-all:hover{
+    background-color: green;
+    color: yellow;
+}
+
