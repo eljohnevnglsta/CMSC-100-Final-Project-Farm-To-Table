@@ -18,7 +18,13 @@ function groupOrdersByUserAndDate(orders) {
 
     orders.forEach(order => {
         const userEmail = order.email;
-        const orderDate = new Date(order.dateOrdered).toDateString();
+        const orderDate = new Date(order.dateOrdered).toLocaleString(undefined, { 
+            year: 'numeric', 
+            month: '2-digit', 
+            day: '2-digit', 
+            hour: '2-digit', 
+            minute: '2-digit' 
+        });
 
         if (!grouped[userEmail]) {
             grouped[userEmail] = {};
@@ -58,11 +64,13 @@ function AdminApproval() {
             console.log(response.data);
             if (response.data.status === false) {
                 console.error(response.data.message);
+                alert(response.data.message);
                 return;
             }
 
             setPendingOrders(prevOrders => prevOrders.filter(order => order.transactionId !== transactionId));
             setPreviousOrders(prevOrders => [...prevOrders, { ...prevOrders.find(order => order.transactionId === transactionId), orderStatus: 1 }]);
+            window.location.reload();
         } catch (err) {
             console.error('Error approving order:', err.message);
         }

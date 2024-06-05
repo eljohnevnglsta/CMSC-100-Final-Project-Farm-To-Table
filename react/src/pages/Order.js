@@ -55,9 +55,9 @@ export default function Order(props) {
                 const cancelled = orders.filter(order => order.orderStatus === 2);
                 const pending = orders.filter(order => order.orderStatus === 0);
                 const completed = orders.filter(order => order.orderStatus === 1);
-                setCancelledOrders(cancelled);
-                setPendingOrders(pending);
-                setCompletedOrders(completed);
+                setCancelledOrders(cancelled.reverse());
+                setPendingOrders(pending.reverse());
+                setCompletedOrders(completed.reverse());
             })
             .catch(error => console.error('Error fetching orders:', error));
     }, []);
