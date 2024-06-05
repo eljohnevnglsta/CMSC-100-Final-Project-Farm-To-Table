@@ -2,14 +2,15 @@ import { useEffect, useState } from 'react';
 import '../../stylesheets/Admin/UserManagement.css';
 import Navbar from '../../components/navbar';
 import { Link } from 'react-router-dom';
-
+import UserDetails from './UserDetails';
 
 export default function UserManagement() {
   const [users, setUsers] = useState([]);
-  const [totalUsers, setTotalUsers] = useState(0);
   const [maxCodeLength, setMaxCodeLength] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [foundUser, setFoundUser] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     fetchUsers();
@@ -26,7 +27,6 @@ export default function UserManagement() {
     }
   }, [searchQuery, users]);
 
-
   const fetchUsers = () => {
     fetch('http://localhost:3001/show-all-user', {
       method: 'POST',
@@ -36,8 +36,7 @@ export default function UserManagement() {
     })
       .then(response => response.json())
       .then(body => {
-        setUsers(body);
-        setTotalUsers(body.length);
+        setUsers(body.filter(user => user.userType !== 'admin'));
 
         const maxLength = Math.max(...body.map(user => user.lastName.length));
         setMaxCodeLength(maxLength);
@@ -68,6 +67,16 @@ export default function UserManagement() {
       });
   };
 
+  const handleUserClick = (user) => {
+    setSelectedUser(user);
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+    setSelectedUser(null);
+  };
+
   return (
     <div>
       <Navbar links={navElements} />
@@ -77,7 +86,7 @@ export default function UserManagement() {
       </div>
       <div className="user-management-container">
         <div className="total-users">
-          <h2 style={{paddingLeft: '10px'}}>All Customers ({totalUsers})</h2>
+          <h2 style={{paddingLeft: '10px'}}>All Customers ({users.length})</h2>
           <input
             type="text"
             placeholder="Search by name"
@@ -96,9 +105,9 @@ export default function UserManagement() {
 
           {foundUser ? (
             <div key={foundUser.email} className="user-item">
-              <Link to={`/user-management/${foundUser.email}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                <p style={{ paddingLeft: '20px' }}>{foundUser.firstName} {foundUser.middleName} {foundUser.lastName}</p>
-              </Link>
+              <span onClick={() => handleUserClick(foundUser)} style={{ cursor: 'pointer', paddingLeft: '20px' }}>
+                {foundUser.firstName} {foundUser.middleName} {foundUser.lastName}
+              </span>
               <p style={{ paddingLeft: '60px', minWidth: '200px' }}>{foundUser.email}</p>
               <p style={{ paddingLeft: '60px', minWidth: '100px' }}>{foundUser.userType}</p>
               <button className="delete-button" onClick={() => handleDelete(foundUser.email)}>Delete</button>
@@ -106,9 +115,9 @@ export default function UserManagement() {
           ) : (
             users.map((user, i) => (
               <div key={i} className="user-item">
-                <Link to={`/user-management/${user.email}`} style={{ textDecoration: 'none', color: 'inherit', width: `${maxCodeLength * 29}px` }}>
-                  <p style={{ paddingLeft: '20px' }}>{user.firstName} {user.middleName} {user.lastName}</p>
-                </Link>
+                <span onClick={() => handleUserClick(user)} style={{ cursor: 'pointer', paddingLeft: '20px', width: `${maxCodeLength * 29}px` }}>
+                  {user.firstName} {user.middleName} {user.lastName}
+                </span>
                 <p style={{ paddingLeft: '10px', minWidth: '200px' }}>{user.email}</p>
                 <p style={{ paddingLeft: '60px', minWidth: '100px' }}>{user.userType}</p>
                 <button className="delete-button" onClick={() => handleDelete(user.email)}>Delete</button>
@@ -117,6 +126,14 @@ export default function UserManagement() {
           )}
         </div>
       </div>
+
+      {showPopup && selectedUser && (
+        <div className="popup-overlay" onClick={closePopup}>
+          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+            <UserDetails email={selectedUser.email} closePopup={closePopup}/>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -127,4 +144,3 @@ const navElements = [
   { title: 'Sales Report', path: '/sales-report' },
   { title: 'Profile', path: '/profile' },
 ];
-

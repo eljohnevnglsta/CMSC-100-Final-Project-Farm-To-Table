@@ -40,6 +40,21 @@ export default function OrderCard({ order, showButtons, onApprove, onCancel }) {
         return <div></div>;
     }
 
+    const getStatus = (order) => {
+        switch (order.orderStatus) {
+            case 0:
+                return 'Pending';
+            case 1:
+                return 'Approved';
+            case 2:
+                return 'Cancelled';
+            default:
+                return 'Unknown';
+        }
+    }
+
+    const statusLabel = getStatus(order);
+
     return (
         <div className="order-card">
             <img src={productDetails.productImage} alt={productDetails.productName} />
@@ -54,7 +69,7 @@ export default function OrderCard({ order, showButtons, onApprove, onCancel }) {
                     <button onClick={() => handleCancel(order.productId)}>Cancel</button>
                 </div>
             ) : (
-                <p id='order-status'>{order.orderStatus === 1 ? 'Approved' : 'Cancelled'}</p>
+                <p id='order-status'>{statusLabel}</p>
             )}
         </div>
     )

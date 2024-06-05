@@ -89,3 +89,58 @@
 .delete-button:hover {
     background-color: #c0392b;
 }
+
+/* UserDetails.css */
+.user-details-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1001;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .centered-title {
+    text-align: center;
+  }
+  
+  .user-card {
+    margin-bottom: 20px;
+  }
+  
+  .order-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .search-input {
+    width: 50%;
+  }
+  
+  .orders-list {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+.orders-list h4 {
+    text-align: center;
+}
+
+  .order-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+  .text-container {
+    margin: 5px 0;
+  }
+  

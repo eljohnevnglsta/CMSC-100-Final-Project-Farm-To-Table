@@ -108,6 +108,7 @@ export const updatedCartItems = async (req, res) => {
 export const checkout = async (req, res) => {
     try {
         const { email } = req.body;
+        console.log(email);
         const existingUser = await User.findOne({email: email});
 
         if (existingUser.shoppingCart.length === 0) {
@@ -116,7 +117,9 @@ export const checkout = async (req, res) => {
         }
 
         const allTransactions = await Order.find({});
-        var index = allTransactions.length + 1
+
+        //get the highest transactionId
+        var index = Math.max(...allTransactions.map(transaction => parseInt(transaction.transactionId, 10))) + 1;
         const cart = existingUser.shoppingCart; 
         
         for (let i = 0; i < cart.length; i++) {
@@ -124,7 +127,6 @@ export const checkout = async (req, res) => {
             
             var status = 0;
             if (product.productQuantity < cart[i].quantity) {
-                // res.send({ status: false, message: "Product " + product.productName + " has insufficient of stock" });
                 status = 2;
             }
 
@@ -145,11 +147,11 @@ export const checkout = async (req, res) => {
 
         existingUser.shoppingCart = [];
         existingUser.save();
-        
+    
         res.send({ status: true, message: "Orders placed successfully" });
 
     } catch (error) {
-        res.status(500).json({ status: false, message: "Internal server error" });
+        res.status(500).json({ status: false, message: "Internal server error", error: error });
     }
 }
 

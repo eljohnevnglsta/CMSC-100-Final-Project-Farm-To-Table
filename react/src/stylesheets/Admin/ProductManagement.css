@@ -59,6 +59,13 @@
     margin: 8px 0;
 }
 
+.product-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
 #adminDeleteProductButton{
     background-color: #f44336;
     color: white;

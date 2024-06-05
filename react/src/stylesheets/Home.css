@@ -59,6 +59,12 @@
     margin-left: 20px;
 }
 
+.card:hover .PCProductName {
+    color: white;
+    font-weight: bold;
+
+}
+
 .PCProductName {
     color: darkgreen;
     font-weight: bold;
@@ -202,6 +208,14 @@
     align-items: center;
     font-weight: bold;
     
+}
+
+.card-content img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+
 }
 
 
