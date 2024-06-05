@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../../components/navbar';
+import BarChart from '../../components/barchart';
 import '../../stylesheets/Admin/SalesReport.css';
 
 const showAllOrders = async () => {
@@ -25,7 +26,7 @@ const SalesReport = () => {
     const [orders, setOrders] = useState([]);
     const [products, setProducts] = useState([]);
     const [report, setReport] = useState([]);
-    const [timeFrame, setTimeFrame] = useState('overall');
+    const [timeFrame, setTimeFrame] = useState('All Time');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -57,18 +58,18 @@ const SalesReport = () => {
         const filteredOrders = orders.filter(order => {
             const orderDate = new Date(order.dateOrdered);
             switch (timeFrame) {
-                case 'weekly':
+                case 'This Week':
                     const oneWeekAgo = new Date(now);
                     oneWeekAgo.setDate(now.getDate() - 7);
-                    return orderDate >= oneWeekAgo;
-                case 'monthly':
+                    return orderDate > oneWeekAgo;
+                case 'This Month':
                     const oneMonthAgo = new Date(now);
                     oneMonthAgo.setMonth(now.getMonth() - 1);
-                    return orderDate >= oneMonthAgo;
-                case 'annual':
+                    return orderDate > oneMonthAgo;
+                case 'This Year':
                     const oneYearAgo = new Date(now);
                     oneYearAgo.setFullYear(now.getFullYear() - 1);
-                    return orderDate >= oneYearAgo;
+                    return orderDate > oneYearAgo;
                 default:
                     return true;
             }
@@ -97,11 +98,12 @@ const SalesReport = () => {
             <div class="sales-report-container">
                 <h1 class="sales-report-heading">Sales Report</h1>
                 <div class="timeframe-buttons">
-                    <button class="timeframe-button" onClick={() => setTimeFrame('weekly')}>Weekly</button>
-                    <button class="timeframe-button" onClick={() => setTimeFrame('monthly')}>Monthly</button>
-                    <button class="timeframe-button" onClick={() => setTimeFrame('annual')}>Annual</button>
-                    <button class="timeframe-button" onClick={() => setTimeFrame('overall')}>Overall</button>
+                    <button class="timeframe-button" onClick={() => setTimeFrame('This Week')}>This Week</button>
+                    <button class="timeframe-button" onClick={() => setTimeFrame('This Month')}>This Month</button>
+                    <button class="timeframe-button" onClick={() => setTimeFrame('This Year')}>This Year</button>
+                    <button class="timeframe-button" onClick={() => setTimeFrame('All Time')}>All Time</button>
                 </div>
+                <BarChart report={report} timeFrame={timeFrame} />
                 <table class="sales-table">
                     <thead>
                         <tr>
@@ -117,12 +119,12 @@ const SalesReport = () => {
                                 <td>{product.productId}</td>
                                 <td>{product.productName}</td>
                                 <td>{product.totalSales}</td>
-                                <td>{product.totalIncome.toFixed(2)}</td>
+                                <td>${product.totalIncome.toFixed(2)}</td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
-                <h2 class="total-income">Total Income: {totalIncome.toFixed(2)}</h2>
+                <h2 class="total-income">Total Income: ${totalIncome.toFixed(2)}</h2>
             </div>
         </div>
     );
