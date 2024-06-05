@@ -87,6 +87,7 @@ function AdminApproval() {
 
             setPendingOrders(prevOrders => prevOrders.filter(order => order.transactionId !== transactionId));
             setPreviousOrders(prevOrders => [...prevOrders, { ...prevOrders.find(order => order.transactionId === transactionId), orderStatus: 2 }]);
+            window.location.reload();
         } catch (err) {
             console.error('Error cancelling order:', err.message);
         }
@@ -137,7 +138,7 @@ function AdminApproval() {
                                 <h3>{user}</h3>
                                 <span>{dropdownState[user]?.pending ? '▲' : '▼'}</span>
                             </div>
-                            {dropdownState[user]?.pending && Object.keys(groupedPendingOrders[user]).map(date => (
+                            {!dropdownState[user]?.pending && Object.keys(groupedPendingOrders[user]).map(date => (
                                 <div className='order-date-container' key={date}>
                                     <h4>{date}</h4>
                                     {groupedPendingOrders[user][date].map(order => (
