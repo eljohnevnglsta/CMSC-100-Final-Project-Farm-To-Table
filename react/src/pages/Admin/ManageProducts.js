@@ -80,6 +80,7 @@ export default function ProductManagement() {
                         <p>Type: {product.productType === 1 ? 'Crop' : 'Poultry'}</p>
                         <p>Quantity: {product.productQuantity}</p>
                         <button id='adminDeleteProductButton' onClick={handleProductDeletion}>Delete</button>
+                        <button id='adminEditProductButton'>Edit</button>
                     </div>
                 ))}
             </div>
