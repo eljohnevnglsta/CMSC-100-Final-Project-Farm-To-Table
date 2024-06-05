@@ -76,7 +76,7 @@ const SalesReport = () => {
         });
 
         const productSales = products.map(product => {
-            const productOrders = filteredOrders.filter(order => order.productId === product.productId);
+            const productOrders = filteredOrders.filter(order => order.productId === product.productId && order.orderStatus == 1);
             const totalSales = productOrders.reduce((sum, order) => sum + order.orderQuantity, 0);
             const totalIncome = productOrders.reduce((sum, order) => sum + (order.orderQuantity * product.productPrice), 0);
 
