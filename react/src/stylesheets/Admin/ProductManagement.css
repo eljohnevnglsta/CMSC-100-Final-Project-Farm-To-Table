@@ -7,7 +7,7 @@
 
 .product-form-container {
     flex: 1;
-    max-width: 300px;
+    max-width: 20%;
 }
 
 .product-form {
@@ -86,6 +86,10 @@
     font-size: 14px;
     margin: 4px 2px;
     cursor: pointer;
+}
+
+.modal{
+    width: 20%;
 }
 
 @media (max-width: 768px) {

@@ -12,6 +12,8 @@ export default function ProductManagement() {
         productType: 1, // default to 'Crop'
         productQuantity: 0
     });
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [editProductData, setEditProductData] = useState(null);
 
     useEffect(() => {
         fetchProducts();
@@ -35,12 +37,12 @@ export default function ProductManagement() {
 
     const inputChanges = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value }); //state updater function for the formData state
-    };                //creates a copy of the current formData state    
+        setFormData({ ...formData, [name]: value });
+    };
 
     const formSubmission = async (e) => {
         e.preventDefault();
-        const response = await axios.post('http://localhost:3001/add-product', formData)
+        const response = await axios.post('http://localhost:3001/add-product', formData);
         if (response.data.inserted) {
             fetchProducts();
             setFormData({
@@ -51,10 +53,9 @@ export default function ProductManagement() {
                 productType: 1,
                 productQuantity: 0
             });
-        } 
+        }
         console.log(response.data);
-
-    }
+    };
 
     const handleProductDeletion = async (e) => {
         const productId = e.target.parentElement.querySelector('p').textContent.split(' ')[1];
@@ -64,9 +65,37 @@ export default function ProductManagement() {
         } else {
             console.error('Failed to delete product');
         }
-
         console.log(response.data);
-    }
+    };
+
+    const handleEditProduct = (product) => {
+        setEditProductData(product);
+        setIsModalOpen(true);
+    };
+
+    const handleEditFormSubmission = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const updatedProduct = {
+            productId: formData.get('productId'),
+            productName: formData.get('productName'),
+            productImage: formData.get('productImage'),
+            productDescription: formData.get('productDescription'),
+            productPrice: parseFloat(formData.get('productPrice')),
+            productType: parseInt(formData.get('productType')),
+            productQuantity: parseInt(formData.get('productQuantity')),
+        };
+
+        const response = await axios.post('http://localhost:3001/update-product', updatedProduct);
+        console.log(response.data);
+        if (response.data.updated) {
+            fetchProducts();
+            setIsModalOpen(false);
+        } else {
+            console.error('Failed to update product');
+        }
+    };
+
     return (
         <div className="product-management-container">
             <div className="product-items-container">
@@ -80,88 +109,163 @@ export default function ProductManagement() {
                         <p>Type: {product.productType === 1 ? 'Crop' : 'Poultry'}</p>
                         <p>Quantity: {product.productQuantity}</p>
                         <button id='adminDeleteProductButton' onClick={handleProductDeletion}>Delete</button>
-                        <button id='adminEditProductButton'>Edit</button>
+                        <button id='adminEditProductButton' onClick={() => handleEditProduct(product)}>Edit</button>
                     </div>
                 ))}
             </div>
 
-            <div className="product-form-container">
-                <h2>Add New Product</h2>
-                <form onSubmit={formSubmission} className="product-form">
-                    <div>
-                        <label>Product ID:</label>
-                        <input
-                            type="text"
-                            name="productId"
-                            value={formData.productId}
-                            onChange={inputChanges}
-                            required
-                        />
+            {!isModalOpen && (
+                <div className="product-form-container">
+                    <h2>Add New Product</h2>
+                    <form onSubmit={formSubmission} className="product-form">
+                        <div>
+                            <label>Product ID:</label>
+                            <input
+                                type="text"
+                                name="productId"
+                                value={formData.productId}
+                                onChange={inputChanges}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Product Name:</label>
+                            <input
+                                type="text"
+                                name="productName"
+                                value={formData.productName}
+                                onChange={inputChanges}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Product Image (URL):</label>
+                            <input
+                                type="text"
+                                name="productImage"
+                                value={formData.productImage}
+                                onChange={inputChanges}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Product Description:</label>
+                            <textarea
+                                name="productDescription"
+                                value={formData.productDescription}
+                                onChange={inputChanges}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Product Price:</label>
+                            <input
+                                type="number"
+                                name="productPrice"
+                                value={formData.productPrice}
+                                onChange={inputChanges}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Product Type:</label>
+                            <select
+                                name="productType"
+                                value={formData.productType}
+                                onChange={inputChanges}
+                                required
+                            >
+                                <option value="1">Crop</option>
+                                <option value="2">Poultry</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Product Quantity:</label>
+                            <input
+                                type="number"
+                                name="productQuantity"
+                                value={formData.productQuantity}
+                                onChange={inputChanges}
+                                required
+                            />
+                        </div>
+                        <button type="submit">Add Product</button>
+                    </form>
+                </div>
+            )}
+
+            {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="close" onClick={() => setIsModalOpen(false)}>&times;</span>
+                        <h2>Edit Product</h2>
+                        <form onSubmit={handleEditFormSubmission} className="product-form">
+                            <input
+                                type="hidden"
+                                name="productId"
+                                defaultValue={editProductData.productId}
+                                required
+                            />
+                            <div>
+                                <label>Product Name:</label>
+                                <input
+                                    type="text"
+                                    name="productName"
+                                    defaultValue={editProductData.productName}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label>Product Image (URL):</label>
+                                <input
+                                    type="text"
+                                    name="productImage"
+                                    defaultValue={editProductData.productImage}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label>Product Description:</label>
+                                <textarea
+                                    name="productDescription"
+                                    defaultValue={editProductData.productDescription}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label>Product Price:</label>
+                                <input
+                                    type="number"
+                                    name="productPrice"
+                                    defaultValue={editProductData.productPrice}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label>Product Type:</label>
+                                <select
+                                    name="productType"
+                                    defaultValue={editProductData.productType}
+                                    required
+                                >
+                                    <option value="1">Crop</option>
+                                    <option value="2">Poultry</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Product Quantity:</label>
+                                <input
+                                    type="number"
+                                    name="productQuantity"
+                                    defaultValue={editProductData.productQuantity}
+                                    required
+                                />
+                            </div>
+                            <button type="submit">Save Changes</button>
+                        </form>
                     </div>
-                    <div>
-                        <label>Product Name:</label>
-                        <input
-                            type="text"
-                            name="productName"
-                            value={formData.productName}
-                            onChange={inputChanges}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Product Image (URL):</label>
-                        <input
-                            type="text"
-                            name="productImage"
-                            value={formData.productImage}
-                            onChange={inputChanges}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Product Description:</label>
-                        <textarea
-                            name="productDescription"
-                            value={formData.productDescription}
-                            onChange={inputChanges}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Product Price:</label>
-                        <input
-                            type="number"
-                            name="productPrice"
-                            value={formData.productPrice}
-                            onChange={inputChanges}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Product Type:</label>
-                        <select
-                            name="productType"
-                            value={formData.productType}
-                            onChange={inputChanges}
-                            required
-                        >
-                            <option value="1">Crop</option>
-                            <option value="2">Poultry</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Product Quantity:</label>
-                        <input
-                            type="number"
-                            name="productQuantity"
-                            value={formData.productQuantity}
-                            onChange={inputChanges}
-                            required
-                        />
-                    </div>
-                    <button type="submit">Add Product</button>
-                </form>
-            </div>
+                </div>
+            )}
         </div>
     );
 }

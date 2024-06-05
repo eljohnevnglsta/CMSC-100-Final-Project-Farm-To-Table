@@ -52,7 +52,8 @@ const updateProductDetails = async (req, res) => {
             product.productImage = req.body.productImage;
         }
         
-        res.json(await product.save());
+        await product.save()
+        res.json({updated: true, message: 'Product details updated'});
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
