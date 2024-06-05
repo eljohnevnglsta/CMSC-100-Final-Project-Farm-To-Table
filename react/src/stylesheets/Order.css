@@ -1,51 +1,91 @@
+/* Order.css */
 
+/* General styles for the orders page */
+.orders-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
 
 .orders-body {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.Pending h1,
-.Approved h1,
-.Cancelled h1 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.status-card {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.status-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 10px;
+/* Section styles for different order statuses */
+.Pending, .Approved, .Cancelled {
+    flex: 1;
+    margin: 0 10px;
 }
 
-.status-card img {
-    max-width: 100px;
-    max-height: 100px;
+.Pending h2, .Approved h2, .Cancelled h2 {
+    color: #444;
     margin-bottom: 10px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Status card styles */
+.status-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+}
+
+.status-card-img-text {
+    display: flex;
+    align-items: center;
+}
+
+.status-card-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.status-details {
+    display: flex;
+    flex-direction: column;
 }
 
 .status-card-name {
     font-weight: bold;
-}
-
-.status-card-quantity {
     margin-bottom: 5px;
 }
 
-.status-card-date {
+.status-card-quantity, .status-card-date {
     color: #666;
-    font-size: 0.9rem;
+    margin-bottom: 5px;
 }
 
-.status-card-img-text{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.cancel-btn {
+    background-color: #ff4c4c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel-btn:hover {
+    background-color: #ff1a1a;
 }

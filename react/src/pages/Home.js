@@ -199,6 +199,9 @@ export default function Home(props) {
                             />
                         ))}
                     </div>
+                    <div className="total">
+                        <h3>Total: ${cart.reduce((acc, item) => acc + item.productPrice * item.quantity, 0).toFixed(2)}</h3>
+                    </div>
                     <button id="checkout-btn" onClick={() => { checkout(email); setCart([]); }}>Checkout</button>
                     <button id="save-cart" onClick={() => saveCart(email, cart)}>Save Current Cart</button>
                 </div>  

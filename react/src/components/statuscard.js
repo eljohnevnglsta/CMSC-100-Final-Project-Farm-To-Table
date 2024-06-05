@@ -48,7 +48,12 @@ export default function StatusCard(props) {
     return (
         <div className="status-card">
             <div className='status-card-img-text'>
-                <img src={productData.image} alt={productData.name} className="status-card-image" />
+                {(productData.image ? 
+                    <img src={productData.image} alt={productData.name} className="status-card-image" />
+                    :
+                    <img src="https://t3.ftcdn.net/jpg/05/11/93/52/360_F_511935270_eWFvJ4B8YBOMZMlDbOecz6pLstVW5mbV.jpg" alt={productData.name} className="status-card-image" />
+                )}
+                
                 <div className='status-details'>
                     <div className="status-card-name">
                         {productData.name ? productData.name : 'Deleted Product'}

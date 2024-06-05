@@ -21,10 +21,14 @@ const handleLogout = async () => {
     window.location.href = '/login';
 } 
 
-const email = JSON.parse(sessionStorage.getItem('user'));
-const userData = await getUserData(email);
-
 export default function Profile() {
+    const email = JSON.parse(localStorage.getItem('user'));
+    const [userData, setUserData] = useState({});
+    useEffect(() => {
+        getUserData(email)
+            .then(data => setUserData(data))
+            .catch(error => console.error('Error fetching user data:', error));
+    }, [email]);
     return (
         <div className="profile-page">
             <Navbar links={userData.userType == "customer" ? navElements : navElements2} />
