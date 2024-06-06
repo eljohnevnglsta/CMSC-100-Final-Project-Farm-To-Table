@@ -42,7 +42,7 @@ export const signup = async (req, res) => {
     
         const newUser = new User(req.body);
         await newUser.save();
-        res.send({ status: true, message: "User signed up successfully"});
+        res.json({ status: true, message: "User signed up successfully"});
 
     } catch (error) {       
         res.status(500).json({ status: false, message: "Internal server error" });
@@ -72,7 +72,7 @@ export const login = async (req, res) => {
         }
     
         generateToken(existingUser._id, res); // Generate token for user
-        res.send({ status: true, message: "User logged in successfully"});
+        res.json({ status: true, message: "User logged in successfully"});
 
     } catch (error) {
         res.status(500).json({ status: false, message: "Internal server error" });
@@ -81,10 +81,10 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
     try {
-        res.clearCookie('jwt');
+        res.clearCookie('jwt', {path: '/', domain: 'localhost'});
         res.send({ status: true, message: "User logged out successfully"});
     } catch (error) {
-        res.status(500).json({ status: false, message: "Internal server error" });
+        res.status(500).send({ status: false, message: "Internal server error" });
     }
 }
 

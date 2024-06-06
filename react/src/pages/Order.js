@@ -7,7 +7,7 @@ import "../stylesheets/Order.css";
 const getOrderByUser = async (email) => {
     const url = 'http://localhost:3001/show-orders-of-user';
     try {
-        const response = await axios.post(url, { email: email });
+        const response = await axios.post(url, { email: email }, {withCredentials: true, credentials: 'include'});
         return response.data;
     } catch (error) {
         console.error('Error:', error);
@@ -18,7 +18,7 @@ const getOrderByUser = async (email) => {
 const cancelOrder = async (transactionId, pendings, setPendingOrders, setCancelledOrders) => {
     const url = 'http://localhost:3001/cancel-order';
     try {
-        await axios.post(url, { transactionId: transactionId });
+        await axios.post(url, { transactionId: transactionId }, {withCredentials: true, credentials: 'include'});
         const cancelledOrder = pendings.find(order => order.transactionId === transactionId);
         setCancelledOrders(prevCancelledOrders => [...prevCancelledOrders, cancelledOrder]);
         setPendingOrders(prevPendingOrders => prevPendingOrders.filter(order => order.transactionId !== transactionId));

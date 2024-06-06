@@ -16,7 +16,7 @@ export default function Login(props) {
 
         var status = false;
         try {
-          const response = await axios.post(url, data);  // Await the response
+          const response = await axios.post(url, data, {withCredentials: true, credentials: 'include'});  // Await the response
           console.log(response.data);
           status = response.data.status;
         } catch (error) {
@@ -35,6 +35,7 @@ export default function Login(props) {
             const findUser = await axios.post('http://localhost:3001/get-user-by-email', data);
             user = findUser.data;
             localStorage.setItem('user', JSON.stringify(user.email));
+            localStorage.setItem('type', JSON.stringify(user.userType));
           } catch (error) {
             console.error('Error:', error);
           }

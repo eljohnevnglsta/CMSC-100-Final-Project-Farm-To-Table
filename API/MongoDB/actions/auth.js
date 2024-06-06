@@ -14,6 +14,7 @@ export const comparePassword = async (password, hashedPassword) => {
 
 export const generateToken = (userId, res) => {
     const token = jwt.sign({ userId }, JWT_SECRET, { expiresIn: '15d' });
+
     res.cookie('jwt', token, { 
         maxAge: 15 * 24 * 60 * 60 * 1000, //ms format
         httpOnly: true,
@@ -23,11 +24,15 @@ export const generateToken = (userId, res) => {
 
 export const verifyToken = (req, res, next) => {
     const token = req.cookies.jwt;
-    if (!token) return res.status(401).send('Access Denied');
+    if (!token){
+        return res.status(401).send('Access Denied');
+    }
     try {
         const verified = jwt.verify(token, JWT_SECRET);
-        req.user = verified;
-        next();
+        if(verified){
+            req.verified = true;
+            return next();
+        }
     } catch (error) {
         res.status(400).send('Invalid Token');
     }

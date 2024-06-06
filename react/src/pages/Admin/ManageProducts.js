@@ -25,6 +25,8 @@ export default function ProductManagement() {
             headers: {
                 'Content-Type': 'application/json',
             },
+            withCredentials: true,
+            credentials: 'include'
         })
             .then(response => response.json())
             .then(body => {
@@ -42,7 +44,8 @@ export default function ProductManagement() {
 
     const formSubmission = async (e) => {
         e.preventDefault();
-        const response = await axios.post('http://localhost:3001/add-product', formData);
+        const response = await axios.post('http://localhost:3001/add-product', formData,{withCredentials: true,
+            credentials: 'include'});
         if (response.data.inserted) {
             fetchProducts();
             setFormData({
@@ -59,7 +62,8 @@ export default function ProductManagement() {
 
     const handleProductDeletion = async (e) => {
         const productId = e.target.parentElement.querySelector('p').textContent.split(' ')[1];
-        const response = await axios.post('http://localhost:3001/delete-product', { productId });
+        const response = await axios.post('http://localhost:3001/delete-product', { productId }, {withCredentials: true,
+            credentials: 'include'});
         if (response.data.deletedCount > 0) {
             fetchProducts();
         } else {
@@ -86,7 +90,8 @@ export default function ProductManagement() {
             productQuantity: parseInt(formData.get('productQuantity')),
         };
 
-        const response = await axios.post('http://localhost:3001/update-product', updatedProduct);
+        const response = await axios.post('http://localhost:3001/update-product', updatedProduct, {withCredentials: true,
+      credentials: 'include'});
         console.log(response.data);
         if (response.data.updated) {
             fetchProducts();
