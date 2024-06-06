@@ -1,22 +1,42 @@
-#approval-page-body {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 20px;
-}
-
-#previous-orders-container {
+/* Main popup container */
+.user-details-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+  max-height: 90%;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  width: 100%;
 }
 
+/* Close button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* User details container */
 .user-details {
   width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
+/* User card styling */
 .user-card {
   display: flex;
   flex-direction: column;
@@ -37,6 +57,7 @@
   color: #333;
 }
 
+/* Orders list styling */
 .orders-list {
   display: flex;
   flex-direction: column;
@@ -86,6 +107,7 @@
   text-align: center;
 }
 
+/* Back button styling */
 .back-button {
   align-self: flex-start;
   margin-bottom: 20px;
@@ -109,7 +131,7 @@
   justify-content: space-between;
   margin-top: 20px;
   width: 79%;
-  margin-bottom:1px;
+  margin-bottom: 1px;
 }
 
 .order-title {

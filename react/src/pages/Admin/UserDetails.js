@@ -103,7 +103,7 @@ export default function UserDetails(props) {
   const groupedOrders = groupOrdersByDate(filteredOrders);
 
   return (
-    <div className="user-details-popup">
+    <div className="user-details-popup" style={{ width: props.width, height: props.height }}>
       <button className="close-button" onClick={props.closePopup}>X</button>
       {user && (
         <div className="user-details">
