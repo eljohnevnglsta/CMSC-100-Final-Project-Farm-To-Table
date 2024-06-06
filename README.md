@@ -25,7 +25,7 @@ The "Farm-to-Table" project aims to create an e-commerce platform that connects 
     - You are not allowed to add an item that is out of stock. 
     - Before checking out, you need to save your cart first in order to update the database. This shall also ensure that when you log out, your cart is synced.
     - When you click checkout, your cart will be automatically cleared and will be processed by the admin.
-    
+
 - **Orders**
     - You will see here the status of your orders grouped by the time you clicked check out.
     - You may cancel any pending orders not confirmed by the admin.
@@ -54,6 +54,9 @@ The "Farm-to-Table" project aims to create an e-commerce platform that connects 
     - You have the power to view the best selling products and filter them by date range.
     - Start Date should always be earlier or the same as end date. Otherwise, no data will be shown. 
     - The table will also show the sales information of all the products in the database given that date you selected.
+- **Profile**
+    - This page contains your user information.
+    - You may click logout if you are done with the site.
 
 
 ## Project Features
