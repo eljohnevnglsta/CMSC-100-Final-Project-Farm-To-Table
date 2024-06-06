@@ -32,8 +32,7 @@ export default function ProductManagement() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            withCredentials: true,
-            credentials: 'include'
+            withCredentials: true, credentials: 'include'
         })
             .then(response => response.json())
             .then(body => {
@@ -52,12 +51,9 @@ export default function ProductManagement() {
 
     const formSubmission = async (e) => {
         e.preventDefault();
-
         const url = isEditing ? 'http://localhost:3001/update-product' : 'http://localhost:3001/add-product';
-        const response = await axios.post(url, formData, {withCredentials: true,
-            credentials: 'include'});
+        const response = await axios.post(url, formData, {withCredentials: true, credentials: 'include'});
         if (response.data.inserted || response.data.updated) {
-
             fetchProducts();
             resetForm();
         }
@@ -70,6 +66,7 @@ export default function ProductManagement() {
             headers: {
                 'Content-Type': 'application/json',
             },
+            withCredentials: true, credentials: 'include'
         })
         .then(response => response.json())
         .then(body => {
@@ -84,8 +81,7 @@ export default function ProductManagement() {
 
     const handleProductDeletion = async (e) => {
         const productId = e.target.parentElement.querySelector('p').textContent.split(' ')[1];
-        const response = await axios.post('http://localhost:3001/delete-product', { productId }, {withCredentials: true,
-            credentials: 'include'});
+        const response = await axios.post('http://localhost:3001/delete-product', { productId }, {withCredentials: true, credentials: 'include'});
         if (response.data.deletedCount > 0) {
             fetchProducts();
         } else {
@@ -100,29 +96,6 @@ export default function ProductManagement() {
         setIsEditing(true);
     };
 
-    const handleEditFormSubmission = async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const updatedProduct = {
-            productId: formData.get('productId'),
-            productName: formData.get('productName'),
-            productImage: formData.get('productImage'),
-            productDescription: formData.get('productDescription'),
-            productPrice: parseFloat(formData.get('productPrice')),
-            productType: parseInt(formData.get('productType')),
-            productQuantity: parseInt(formData.get('productQuantity')),
-        };
-
-        const response = await axios.post('http://localhost:3001/update-product', updatedProduct, {withCredentials: true,
-      credentials: 'include'});
-        console.log(response.data);
-        if (response.data.updated) {
-            fetchProducts();
-            setIsModalOpen(false);
-        } else {
-            console.error('Failed to update product');
-        }
-
     const resetForm = () => {
         setFormData({
             productId: '',
@@ -136,7 +109,6 @@ export default function ProductManagement() {
         setShowForm(false);
         setIsEditing(false);
         fetchProducts();  //products are fetched when form is reset
-
     };
 
     const filteredProducts = filter === 'all' ? products : products.filter(product => product.productType === parseInt(filter));
