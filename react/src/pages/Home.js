@@ -25,6 +25,11 @@ export const getUserData = async (email) => {
         user = response.data;
     } catch (error) {
         console.error('Error:', error);
+        if (error.response.status === 401) {
+            localStorage.removeItem('user');
+            localStorage.removeItem('type');
+            window.location.href = '/login';
+        }
     }
     return user;
 }

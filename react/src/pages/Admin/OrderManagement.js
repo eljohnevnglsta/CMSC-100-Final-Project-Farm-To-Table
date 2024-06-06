@@ -49,7 +49,7 @@ function AdminApproval() {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const allOrders = await showAllOrders();
+                const allOrders = (await showAllOrders()).reverse();
                 setPendingOrders(allOrders.filter(order => order.orderStatus === 0));
                 setPreviousOrders(allOrders.filter(order => order.orderStatus !== 0));
             } catch (err) {

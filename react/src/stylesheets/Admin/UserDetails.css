@@ -7,10 +7,10 @@
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 40px;
+  padding: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 50%;
-  max-height: 80%;
+  max-width: 90%;
+  max-height: 90%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -47,8 +47,8 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 10px auto;
   background-color: #fff;
-  width: 90%;
-  max-width: 550px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .user-card p {
@@ -61,7 +61,7 @@
 .orders-list {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
 }
 
 .order-card {
@@ -72,8 +72,8 @@
   border-radius: 8px;
   padding: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 101%;
-  max-width: 101%;
+  width: 100%;
+  max-width: 600px;
   margin: 10px auto;
   background-color: #fff;
   justify-content: space-evenly;
@@ -130,13 +130,13 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 20px;
-  width: 100%;
+  width: 79%;
   margin-bottom: 1px;
 }
 
 .order-title {
   flex: 1;
-  text-align: center;
+  margin-left: 300px; 
 }
 
 .search-input {

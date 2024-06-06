@@ -174,11 +174,13 @@ body, html {
 }
 
 .product-item {
+
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 16px;
-    width: calc(25% - 16px);
+    /* width: calc(25% - 16px); */
+    width: 320px;
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;

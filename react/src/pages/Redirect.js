@@ -5,7 +5,7 @@ const Redirect = () => {
     const type = localStorage.getItem('type')
     console.log(user);
     if (user)
-        return (type === "admin") ? window.location.href = "/admin" : window.location.href = "/home"
+        return (type === '"admin"') ? window.location.href = "/admin" : window.location.href = "/home"
     else
         return <Outlet />
 }

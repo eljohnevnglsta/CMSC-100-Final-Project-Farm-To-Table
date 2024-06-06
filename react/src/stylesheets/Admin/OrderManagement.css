@@ -25,7 +25,7 @@
     border-radius: 8px; /* Rounded corners */
     padding: 16px; /* Space inside the card */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    width: 80%; /* Fixed width for the card */
+    width: 50%; /* Fixed width for the card */
     margin: 10px auto; /* Center the card horizontally and add vertical spacing */
     background-color: #fff; /* White background for the card */
     justify-content: space-evenly;
