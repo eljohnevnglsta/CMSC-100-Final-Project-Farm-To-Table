@@ -5,7 +5,6 @@ const AdminRoutes = () => {
     console.log(type);
     const admin = "admin";
 
-
     if(type === admin)
         return <Outlet />
     else

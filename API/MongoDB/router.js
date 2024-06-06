@@ -10,14 +10,14 @@ import { verifyToken } from "./actions/auth.js";
 const router = (app) => {
     // user 
     app.post('/add-user',verifyToken, addUser);
-    app.post('/get-user-by-email', getUserbyEmail)
+    app.post('/get-user-by-email',verifyToken, getUserbyEmail)
     app.post('/update-user',verifyToken, updateUserDetails);
     app.post('/delete-user',verifyToken, deleteUser);
     app.post('/show-all-user',verifyToken, showAllUser);
 
     // product
     app.post('/add-product',verifyToken, addNewProduct)
-    app.post('/get-product-by-id',verifyToken, getProductByID);
+    app.post('/get-product-by-id', verifyToken, getProductByID);
     app.post('/update-product',verifyToken, updateProductDetails);
     app.post('/delete-product',verifyToken, deleteProduct);
     app.post('/show-all-product',verifyToken, showAllProducts);

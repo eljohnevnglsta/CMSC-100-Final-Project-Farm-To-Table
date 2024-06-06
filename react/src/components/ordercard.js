@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const getProductDetails = async (id) => {
     try {
-        const response = await axios.post('http://localhost:3001/get-product-by-id', { productId: id });
+        const response = await axios.post('http://localhost:3001/get-product-by-id', { productId: id }, {withCredentials: true, credentials: 'include'});
         return response.data;
     } catch (error) {
         console.error('Error fetching product:', error.message);

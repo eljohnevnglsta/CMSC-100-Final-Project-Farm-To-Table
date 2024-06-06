@@ -19,7 +19,7 @@ export default function ProductCard(props) {
                     <img src={product.productImage} alt={product.productName} />
                     <p className="PCProductName">{product.productName}</p>
                     <p>{product.productDescription}</p>
-                    <p>{product.productPrice}</p>
+                    <p>${product.productPrice}</p>
                     <button onClick={() => props.addToCart(product)}>Add to Cart</button>
                 </div>
             </div> 

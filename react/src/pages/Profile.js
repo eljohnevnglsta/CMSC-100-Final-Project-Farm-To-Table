@@ -7,7 +7,7 @@ import rootbg from '../images/profile-img.jpeg';
 const getUserData = async (email) => {
     const url = 'http://localhost:3001/get-user-by-email';
     try {
-        const response = await axios.post(url, { email: email });
+        const response = await axios.post(url, { email: email }, {withCredentials: true, credentials: 'include'});
         return response.data;
     } catch (error) {
         console.error('Error:', error);
@@ -33,7 +33,7 @@ export default function Profile() {
     }, [email]);
     return (
         <div className="profile-page">
-            <Navbar links={userData.userType == "customer" ? navElements : navElements2} />
+            <Navbar links={userData.userType == "admin" ? navElements2 : navElements} />
             <div id="ProfileBackground">
           <img
                     src={rootbg}

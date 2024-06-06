@@ -32,7 +32,7 @@ export default function Login(props) {
           delete data.password;
           var user = {};
           try {
-            const findUser = await axios.post('http://localhost:3001/get-user-by-email', data);
+            const findUser = await axios.post('http://localhost:3001/get-user-by-email', data, {withCredentials: true, credentials: 'include'});
             user = findUser.data;
             localStorage.setItem('user', JSON.stringify(user.email));
             localStorage.setItem('type', JSON.stringify(user.userType));

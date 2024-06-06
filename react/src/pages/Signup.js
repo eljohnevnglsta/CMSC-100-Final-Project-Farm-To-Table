@@ -32,15 +32,6 @@ export default function Signup() {
           alert('Invalid email or password');
           return;
         }
-        
-        var user = {};
-        try {
-            const findUser = await axios.post('http://localhost:3001/get-user-by-email', { email: email });
-            user = findUser.data;
-            localStorage.setItem('user', JSON.stringify(user.email));
-          } catch (error) {
-            console.error('Error:', error);
-          }
           
         window.location.href = '/home';
     }

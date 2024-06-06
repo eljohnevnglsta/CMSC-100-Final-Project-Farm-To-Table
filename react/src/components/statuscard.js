@@ -4,7 +4,7 @@ import axios from 'axios';
 const getProductName = async (productId) => {
     const url = 'http://localhost:3001/get-product-by-id';
     try {
-        const response = await axios.post(url, { productId: productId });
+        const response = await axios.post(url, { productId: productId }, {withCredentials: true, credentials: 'include'});
         return {
             name: response.data.productName,
             image: response.data.productImage,

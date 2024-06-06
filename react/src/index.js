@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
 
 // Importing the pages
 import Root from './pages/Root';
@@ -18,12 +18,18 @@ import UserManagement from './pages/Admin/Accounts';
 import UserDetails from './pages/Admin/UserDetails';
 import ProtectedRoutes from './pages/Protected';
 import AdminRoutes from './pages/Auth';
+import Redirect from './pages/Redirect';
 
 const router = createBrowserRouter([
   { path: '/', element: <Root /> },
-  { path: '/login', element: <Login /> },
-  { path: '/signup', element: <SignUp /> },
 
+  {element: <Redirect />, children: 
+    [
+      { path: '/login', element: <Login /> },
+      { path: '/signup', element: <SignUp /> }
+    ]
+  },
+  
   { element: <ProtectedRoutes/>, children: 
     [
       //customer pages
@@ -38,7 +44,6 @@ const router = createBrowserRouter([
           { path: 'sales-report', element: <SalesReport /> },
           { path: 'products', element: <ProductManagement /> },
           { path: 'user-management', element: <UserManagement /> },
-          { path: 'user-management/:email', element: <UserDetails /> },
           { path: 'order-management', element: <OrderManagement /> },
         ]
       }

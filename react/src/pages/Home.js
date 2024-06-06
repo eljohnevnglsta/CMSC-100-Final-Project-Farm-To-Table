@@ -21,7 +21,7 @@ export const getUserData = async (email) => {
     const url = 'http://localhost:3001/get-user-by-email';
     var user = {};
     try {
-        const response = await axios.post(url, { email: email });
+        const response = await axios.post(url, { email: email }, {withCredentials: true, credentials: 'include'});
         user = response.data;
     } catch (error) {
         console.error('Error:', error);
