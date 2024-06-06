@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../../stylesheets/Admin/UserDetails.css';
 import OrderCard from '../../components/ordercard';
 import axios from 'axios';
@@ -20,7 +19,6 @@ export default function UserDetails(props) {
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const email = props.email;  
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserDetails = async () => {

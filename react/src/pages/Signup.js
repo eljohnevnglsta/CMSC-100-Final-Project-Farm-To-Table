@@ -1,6 +1,5 @@
 import "../stylesheets/Signup.css";
 import axios from 'axios';
-import rootbg from '../images/root-img.jpg';
 import Navbar from "../components/navbar"
 
 export default function Signup() {

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../../stylesheets/Admin/UserManagement.css';
 import Navbar from '../../components/navbar';
-import { Link } from 'react-router-dom';
 import UserDetails from './UserDetails';
 
 export default function UserManagement() {

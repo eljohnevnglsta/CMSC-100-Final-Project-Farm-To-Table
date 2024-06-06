@@ -33,7 +33,7 @@ export default function Profile() {
     }, [email]);
     return (
         <div className="profile-page">
-            <Navbar links={userData.userType == "admin" ? navElements2 : navElements} />
+            <Navbar links={userData.userType === "admin" ? navElements2 : navElements} />
             <div id="ProfileBackground">
           <img
                     src={rootbg}

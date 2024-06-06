@@ -20,7 +20,7 @@ const cancelOrder = async (transactionId, pendings, setPendingOrders, setCancell
     try {
         await axios.post(url, { transactionId: transactionId }, {withCredentials: true, credentials: 'include'});
         const cancelledOrder = pendings.find(order => order.transactionId === transactionId);
-        setCancelledOrders(prevCancelledOrders => [...prevCancelledOrders, cancelledOrder]);
+        setCancelledOrders(prevCancelledOrders => [...prevCancelledOrders, cancelledOrder].reverse());
         setPendingOrders(prevPendingOrders => prevPendingOrders.filter(order => order.transactionId !== transactionId));
     } catch (error) {
         console.error('Error:', error);

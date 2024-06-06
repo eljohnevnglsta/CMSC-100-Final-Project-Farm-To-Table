@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // Importing the pages
 import Root from './pages/Root';
@@ -15,7 +15,6 @@ import ProductManagement from './pages/Admin/ManageProducts';
 import OrderManagement from './pages/Admin/OrderManagement';
 import SalesReport from './pages/Admin/SalesReport';
 import UserManagement from './pages/Admin/Accounts';
-import UserDetails from './pages/Admin/UserDetails';
 import ProtectedRoutes from './pages/Protected';
 import AdminRoutes from './pages/Auth';
 import Redirect from './pages/Redirect';

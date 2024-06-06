@@ -58,8 +58,6 @@ export default function Home(props) {
     const email = JSON.parse(localStorage.getItem('user'));
     const [originalProductList, setOriginalProductList] = useState([]);
     const [filteredProductList, setFilteredProductList] = useState([]);
-    const [initialCart, setInitialCart] = useState([]);
-    const [userData, setUserData] = useState({});
     const [cart, setCart] = useState([]);
     const [searchProduct, setSearchProduct] = useState("");
 
@@ -77,8 +75,6 @@ export default function Home(props) {
             setFilteredProductList(sortedProducts);
 
             // Set initial cart and user data
-            setInitialCart(user.shoppingCart);
-            setUserData(user);
             setCart(user.shoppingCart);
         }
         fetchData();

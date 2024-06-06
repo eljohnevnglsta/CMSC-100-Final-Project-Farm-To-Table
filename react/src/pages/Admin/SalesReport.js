@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import Navbar from '../../components/navbar';
 import BarChart from '../../components/barchart';
@@ -50,11 +50,7 @@ const SalesReport = () => {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        generateReport();
-    }, [orders, products, startDate, endDate]);
-
-    const generateReport = () => {
+    const generateReport = useCallback(() => {
         if (!orders.length || !products.length || !startDate || !endDate) {
             // Orders, products, or dates are not yet available, do nothing
             console.log('Orders, products, or date range not set');
@@ -86,7 +82,11 @@ const SalesReport = () => {
         });
 
         setReport(productSales);
-    };
+    }, [orders, products, startDate, endDate]);
+
+    useEffect(() => {
+        generateReport();
+    }, [orders, products, startDate, endDate, generateReport]);
 
     const totalIncome = report.reduce((sum, product) => sum + product.totalIncome, 0);
 

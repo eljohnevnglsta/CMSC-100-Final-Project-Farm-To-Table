@@ -1,13 +1,9 @@
 import { useEffect, useState } from 'react';
 import '../../stylesheets/Admin/ProductManagement.css';
 import axios from 'axios';
-import rootbg from '../../images/root-img.jpg';
 
 export default function ProductManagement() {
-    const [users, setUsers] = useState([]);
     const [products, setProducts] = useState([]);
-    const [totalUsers, setTotalUsers] = useState(0);
-    const [totalProducts, setTotalProducts] = useState(0);
     const [formData, setFormData] = useState({
         productId: '',
         productName: '',
@@ -22,7 +18,6 @@ export default function ProductManagement() {
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
-        fetchUsers();
         fetchProducts();
     }, []);
 
@@ -52,7 +47,6 @@ export default function ProductManagement() {
         })
         .then(body => {
             setProducts(body);
-            setTotalProducts(body.length);
         })
         .catch(error => {
             console.error('Error fetching products:', error);
@@ -75,44 +69,7 @@ export default function ProductManagement() {
         }
         console.log(response.data);
     };
-    
-    const fetchUsers = () => {
-        fetch('http://localhost:3001/show-all-user', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            withCredentials: true, credentials: 'include'
-        })
-        .then(response => {
-            if (!response.ok) {
-                // Check if the response status is 401 (Unauthorized)
-                if (response.status === 401) {
-                    // Handle unauthorized access
-                    localStorage.removeItem('user');
-                    localStorage.removeItem('type');
-                    window.location.href = '/login';
-                }
-                // Throw an error to be caught in the catch block
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            // If the response is ok, parse it as JSON
-            return response.json();
-        })
-        .then(body => {
-            const customers = body.filter(user => user.userType === 'customer');
-            setUsers(customers);
-            setTotalUsers(customers.length);
-        })
-        .catch(error => {
-            console.error('Error fetching users:', error);
-            if (error.response.status === 401) {
-                localStorage.removeItem('user');
-                localStorage.removeItem('type');
-                window.location.href = '/login';
-            }
-        });
-    };
+
 
     const handleProductDeletion = async (e) => {
         const productId = e.target.parentElement.querySelector('p').textContent.split(' ')[1];

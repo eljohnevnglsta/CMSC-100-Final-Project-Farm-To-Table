@@ -22,7 +22,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: fill;
+  max-width: stretch;
   padding: 1rem;
   background-color: #72471c;
   /* Semi-transparent background */
