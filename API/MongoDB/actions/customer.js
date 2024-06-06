@@ -108,7 +108,6 @@ export const updatedCartItems = async (req, res) => {
 export const checkout = async (req, res) => {
     try {
         const { email } = req.body;
-        console.log(email);
         const existingUser = await User.findOne({email: email});
 
         if (existingUser.shoppingCart.length === 0) {

@@ -192,7 +192,7 @@ export default function Home(props) {
                         <select defaultValue="all" id="category" onChange={handleCategoryChange}>
                             <option value="all">All</option>
                             <option value="poultry">Poultry</option>
-                            <option value="dairy">Dairy</option>
+                            <option value="crop">Crop</option>
                         </select>
                         <button id="home-show-all" onClick={handleSorting}>APPLY</button>
                     </div>
