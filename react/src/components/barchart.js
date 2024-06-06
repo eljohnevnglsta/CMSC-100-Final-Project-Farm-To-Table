@@ -26,7 +26,7 @@ const BarChart = ({ report, timeFrame }) => {
             },
             title: {
                 display: true,
-                text: `Total Income per Product - ${timeFrame}`,
+                text: `Total Income per Product`,
             },
         },
     };
