@@ -1,8 +1,8 @@
 .user-management-container {
-    width: 80%;
-    margin: 0 auto;
-    font-family: sans-serif;
-    margin-bottom: 50px;
+  width: 80%;
+  margin: 0 auto;
+  font-family: sans-serif;
+  margin-bottom: 50px;
 }
 
 .header {
@@ -15,16 +15,14 @@
 }
 
 .header h2 {
-    margin: 0;
-    color: #333;
+  margin: 0;
+  color: #333;
 }
 
 .header p {
-    margin: 5px 0 0;
-    color: #666;
-    
+  margin: 5px 0 0;
+  color: #666;
 }
-
 
 .total-users {
   border: 1px solid #ddd;
@@ -38,11 +36,10 @@
 }
 
 .search-input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 40px;
-    
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 40px;
 }
 
 .user-list {
@@ -54,11 +51,11 @@
 
 .table-header,
 .user-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px; 
-    border-bottom: 1px solid #ddd;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 3fr 3fr 2fr 1fr;
+  align-items: center;
+  padding: 16px; 
+  border-bottom: 1px solid #ddd;
 }
 
 .table-header {
@@ -70,18 +67,17 @@
   border-top: 1px solid #ddd; 
 }
 
-.user-item:last-child {
-    border-bottom: none;
+.table-header-item {
+  text-align: left;
+  padding: 0 10px;
 }
 
+.user-item:last-child {
+  border-bottom: none;
+}
 
-.user-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px; 
-  border-bottom: 1px solid #ddd; 
-  position: relative; 
+.user-name {
+  cursor: pointer;
 }
 
 .delete-button {
@@ -91,77 +87,36 @@
   padding: 8px 16px; 
   cursor: pointer;
   border-radius: 20px;
-  position: absolute; 
-  right: 60px; 
-  top: 50%; 
-  transform: translateY(-50%); 
 }
 
 .delete-button:hover {
-    background-color: #c0392b;
+  background-color: #c0392b;
 }
 
-.user-item p {
-  flex: 1;
+.user-item p,
+.user-name {
   padding: 0 10px;
-  margin-left: 5px; 
+  margin: 0;
 }
 
-/* UserDetails.css */
-.user-details-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    z-index: 1001;
-    width: 80%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .centered-title {
-    text-align: center;
-  }
-  
-  .user-card {
-    margin-bottom: 20px;
-  }
-  
-  .order-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .search-input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 2%; 
-    width: auto; 
-  }
-  
-  .orders-list {
-    max-height: 300px;
-    overflow-y: auto;
-  }
-  
-.orders-list h4 {
-    text-align: center;
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-  .order-card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-  }
-  
-  .text-container {
-    margin: 5px 0;
-  }
-  
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1001;
+}

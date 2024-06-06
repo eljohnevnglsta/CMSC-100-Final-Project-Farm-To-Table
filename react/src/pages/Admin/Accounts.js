@@ -6,7 +6,6 @@ import UserDetails from './UserDetails';
 
 export default function UserManagement() {
   const [users, setUsers] = useState([]);
-  const [maxCodeLength, setMaxCodeLength] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [foundUser, setFoundUser] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -37,9 +36,6 @@ export default function UserManagement() {
       .then(response => response.json())
       .then(body => {
         setUsers(body.filter(user => user.userType !== 'admin'));
-
-        const maxLength = Math.max(...body.map(user => user.lastName.length));
-        setMaxCodeLength(maxLength);
       })
       .catch(error => {
         console.error('Error fetching users:', error);
@@ -98,28 +94,28 @@ export default function UserManagement() {
 
         <div className="user-list">
           <div className="table-header">
-            <p style={{paddingLeft: '20px'}}>Name</p>
-            <p>Email</p>
-            <p style={{paddingRight: '235px'}}>User Type</p>
+            <p className="table-header-item">Name</p>
+            <p className="table-header-item">Email</p>
+            <p className="table-header-item">User Type</p>
           </div>
 
           {foundUser ? (
             <div key={foundUser.email} className="user-item">
-              <span onClick={() => handleUserClick(foundUser)} style={{ cursor: 'pointer', paddingLeft: '20px' }}>
+              <span onClick={() => handleUserClick(foundUser)} className="user-name">
                 {foundUser.firstName} {foundUser.middleName} {foundUser.lastName}
               </span>
-              <p style={{ paddingLeft: '60px', minWidth: '200px' }}>{foundUser.email}</p>
-              <p style={{ paddingLeft: '60px', minWidth: '100px' }}>{foundUser.userType}</p>
+              <p className="user-email">{foundUser.email}</p>
+              <p className="user-type">{foundUser.userType}</p>
               <button className="delete-button" onClick={() => handleDelete(foundUser.email)}>Delete</button>
             </div>
           ) : (
             users.map((user, i) => (
               <div key={i} className="user-item">
-                <span onClick={() => handleUserClick(user)} style={{ cursor: 'pointer', paddingLeft: '20px', width: `${maxCodeLength * 29}px` }}>
+                <span onClick={() => handleUserClick(user)} className="user-name">
                   {user.firstName} {user.middleName} {user.lastName}
                 </span>
-                <p style={{ paddingLeft: '2px', minWidth: '200px' }}>{user.email}</p>
-                <p style={{ paddingLeft: '1px',paddingRight:'15px', minWidth: '100px' }}>{user.userType}</p>
+                <p className="user-email">{user.email}</p>
+                <p className="user-type">{user.userType}</p>
                 <button className="delete-button" onClick={() => handleDelete(user.email)}>Delete</button>
               </div>
             ))
