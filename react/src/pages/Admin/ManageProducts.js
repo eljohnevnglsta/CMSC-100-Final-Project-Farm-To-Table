@@ -113,39 +113,7 @@ export default function ProductManagement() {
 
     return (
         <div>
-            <div className="intro">
-            <img
-                    src={rootbg}
-                    alt="peter-wendt-r5-KSMkyo-Sc-unsplash"
-                    border="0"
-                />
-                <h2>Welcome Admin!</h2>
-                <p>Our mission is to bridge the gap between farmers and consumers, fostering a direct connection that brings fresh, locally sourced produce straight to your table. As part of the Department of Agriculture's initiative, our e-commerce website facilitates seamless transactions, empowering farmers to showcase their harvests and enabling customers to make informed choices.</p>
-            </div>
-
-
             <div className="product-management-container">
-                <div class="info-center box">
-                    <div class="info">
-                        <span class="icon"><i class="bx bx-purchase-tag"></i></span>
-                        <h4>Total Products</h4>
-                        <span class="text">{totalProducts}</span>
-                    </div>
-
-     
-                    <div class="info">
-                        <span class="icon"><i class="bx bx-book-reader"></i></span>
-                        <h4>Total Customers</h4>
-                        <span class="text">{totalUsers}</span>
-                    </div>
-
-                    <div class="info">
-                        <span class="icon"><i class="bx bx-headphone"></i></span>
-                        <h4>Total Income</h4>
-                        <span class="text"></span>
-                    </div>
-                </div>
-
                 <div class="h">
                     <h1><span>Manage</span> Products</h1>
                 </div>

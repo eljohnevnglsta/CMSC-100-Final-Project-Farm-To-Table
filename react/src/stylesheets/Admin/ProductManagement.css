@@ -185,8 +185,8 @@ body, html {
 }
 
 .product-item img {
-    max-width: 100%;
-    height: auto;
+    width: 200px;
+    height: 150px;
     border-radius: 8px;
 }
 
@@ -410,6 +410,7 @@ nav ul li a:hover {
   
 
   .h {
+    margin-top: -50px;
     font-size: 2rem;
     text-align: center;
     margin-bottom: 1px;

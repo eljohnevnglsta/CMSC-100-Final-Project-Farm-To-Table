@@ -17,7 +17,7 @@ const getUserData = async (email) => {
 
 const handleLogout = async () => {
     axios.post('http://localhost:3001/logout');
-    sessionStorage.removeItem('user');
+    localStorage.removeItem('user');
     window.location.href = '/login';
 } 
 
