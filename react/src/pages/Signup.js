@@ -32,7 +32,7 @@ export default function Signup() {
           return;
         }
           
-        window.location.href = '/home';
+        window.location.href = '/login';
     }
     
     return (
