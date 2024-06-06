@@ -6,29 +6,34 @@ import '../../stylesheets/Admin/SalesReport.css';
 
 const showAllOrders = async () => {
     try {
-        const response = await axios.post('http://localhost:3001/show-all-orders', {}, {withCredentials: true,
-            credentials: 'include'});
+        const response = await axios.post('http://localhost:3001/show-all-orders', {}, {
+            withCredentials: true,
+            credentials: 'include'
+        });
         return response.data;
     } catch (error) {
         console.error('Error fetching orders:', error.message);
     }
-}
+};
 
 const GetAllProducts = async () => {
     try {
-        const response = await axios.post('http://localhost:3001/show-all-product', {}, {withCredentials: true,
-            credentials: 'include'});
+        const response = await axios.post('http://localhost:3001/show-all-product', {}, {
+            withCredentials: true,
+            credentials: 'include'
+        });
         return response.data;
     } catch (error) {
         console.error('Error fetching products:', error.message);
     }
-}
+};
 
 const SalesReport = () => {
     const [orders, setOrders] = useState([]);
     const [products, setProducts] = useState([]);
     const [report, setReport] = useState([]);
-    const [timeFrame, setTimeFrame] = useState('All Time');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -41,44 +46,35 @@ const SalesReport = () => {
                 console.error('Error fetching data:', error);
             }
         };
-        
+
         fetchData();
     }, []);
 
     useEffect(() => {
         generateReport();
-    }, [orders, products, timeFrame]);
+    }, [orders, products, startDate, endDate]);
 
     const generateReport = () => {
-        if (!orders || !products) {
-            // orders or products are not yet available, do nothing
+        if (!orders.length || !products.length || !startDate || !endDate) {
+            // Orders, products, or dates are not yet available, do nothing
+            console.log('Orders, products, or date range not set');
             return;
         }
 
-        console.log(`Generating report for timeframe: ${timeFrame}`);
-        const now = new Date();
+        console.log(`Generating report for date range: ${startDate} to ${endDate}`);
+        
+        const start = new Date(startDate);
+        start.setHours(0, 0, 0, 0);
+        const end = new Date(endDate);
+        end.setHours(23, 59, 59, 999);
+
         const filteredOrders = orders.filter(order => {
             const orderDate = new Date(order.dateOrdered);
-            switch (timeFrame) {
-                case 'This Week':
-                    const oneWeekAgo = new Date(now);
-                    oneWeekAgo.setDate(now.getDate() - 7);
-                    return orderDate > oneWeekAgo;
-                case 'This Month':
-                    const oneMonthAgo = new Date(now);
-                    oneMonthAgo.setMonth(now.getMonth() - 1);
-                    return orderDate > oneMonthAgo;
-                case 'This Year':
-                    const oneYearAgo = new Date(now);
-                    oneYearAgo.setFullYear(now.getFullYear() - 1);
-                    return orderDate > oneYearAgo;
-                default:
-                    return true;
-            }
+            return orderDate >= start && orderDate <= end;
         });
 
         const productSales = products.map(product => {
-            const productOrders = filteredOrders.filter(order => order.productId === product.productId && order.orderStatus == 1);
+            const productOrders = filteredOrders.filter(order => order.productId === product.productId && order.orderStatus === 1);
             const totalSales = productOrders.reduce((sum, order) => sum + order.orderQuantity, 0);
             const totalIncome = productOrders.reduce((sum, order) => sum + (order.orderQuantity * product.productPrice), 0);
 
@@ -96,17 +92,29 @@ const SalesReport = () => {
 
     return (
         <div>
-            <Navbar links={navElements} />  
-            <div class="sales-report-container">
-                <h1 class="sales-report-heading">Sales Report</h1>
-                <div class="timeframe-buttons">
-                    <button class="timeframe-button" onClick={() => setTimeFrame('This Week')}>This Week</button>
-                    <button class="timeframe-button" onClick={() => setTimeFrame('This Month')}>This Month</button>
-                    <button class="timeframe-button" onClick={() => setTimeFrame('This Year')}>This Year</button>
-                    <button class="timeframe-button" onClick={() => setTimeFrame('All Time')}>All Time</button>
+            <Navbar links={navElements} />
+            <div className="sales-report-container">
+                <h1 className="sales-report-heading">Sales Report</h1>
+                <div className="date-range-inputs">
+                    <label>
+                        Start Date:
+                        <input 
+                            type="date" 
+                            value={startDate} 
+                            onChange={(e) => setStartDate(e.target.value)} 
+                        />
+                    </label>
+                    <label>
+                        End Date:
+                        <input 
+                            type="date" 
+                            value={endDate} 
+                            onChange={(e) => setEndDate(e.target.value)} 
+                        />
+                    </label>
                 </div>
-                <BarChart report={report} timeFrame={timeFrame} />
-                <table class="sales-table">
+                <BarChart report={report} />
+                <table className="sales-table">
                     <thead>
                         <tr>
                             <th>Product ID</th>
@@ -126,7 +134,7 @@ const SalesReport = () => {
                         ))}
                     </tbody>
                 </table>
-                <h2 class="total-income">Total Income: ${totalIncome.toFixed(2)}</h2>
+                <h2 className="total-income">Total Income: ${totalIncome.toFixed(2)}</h2>
             </div>
         </div>
     );
@@ -137,6 +145,6 @@ const navElements = [
     { title: 'User Management', path: '/user-management' },
     { title: 'Order Management', path: '/order-management' },
     { title: 'Profile', path: '/profile' }
-]; 
+];
 
 export default SalesReport;
