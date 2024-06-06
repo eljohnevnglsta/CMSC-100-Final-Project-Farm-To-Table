@@ -100,7 +100,7 @@ export default function UserManagement() {
           <div className="table-header">
             <p style={{paddingLeft: '20px'}}>Name</p>
             <p>Email</p>
-            <p style={{paddingRight: '290px'}}>User Type</p>
+            <p style={{paddingRight: '235px'}}>User Type</p>
           </div>
 
           {foundUser ? (
@@ -118,8 +118,8 @@ export default function UserManagement() {
                 <span onClick={() => handleUserClick(user)} style={{ cursor: 'pointer', paddingLeft: '20px', width: `${maxCodeLength * 29}px` }}>
                   {user.firstName} {user.middleName} {user.lastName}
                 </span>
-                <p style={{ paddingLeft: '10px', minWidth: '200px' }}>{user.email}</p>
-                <p style={{ paddingLeft: '60px', minWidth: '100px' }}>{user.userType}</p>
+                <p style={{ paddingLeft: '2px', minWidth: '200px' }}>{user.email}</p>
+                <p style={{ paddingLeft: '1px',paddingRight:'15px', minWidth: '100px' }}>{user.userType}</p>
                 <button className="delete-button" onClick={() => handleDelete(user.email)}>Delete</button>
               </div>
             ))

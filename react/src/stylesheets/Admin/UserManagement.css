@@ -2,16 +2,16 @@
     width: 80%;
     margin: 0 auto;
     font-family: sans-serif;
-    
+    margin-bottom: 50px;
 }
 
 .header {
-    text-align: center;
-    margin: 20px 0;
-    padding: 20px;
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #f1f1f1; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header h2 {
@@ -25,16 +25,16 @@
     
 }
 
+
 .total-users {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-bottom: none;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-bottom: none;
+  border-top-left-radius: 8px; 
+  border-top-right-radius: 8px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .search-input {
@@ -46,48 +46,65 @@
 }
 
 .user-list {
-    border: 1px solid #ccc;
-    border-top: none;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    
+  border: 1px solid #ddd;
+  border-top: none;
+  border-bottom-left-radius: 8px; 
+  border-bottom-right-radius: 8px; 
 }
 
-.table-header, .user-item {
+.table-header,
+.user-item {
     display: flex;
     justify-content: space-between;
-    padding: 7px;
-    border-bottom: 1px solid #ccc;
+    padding: 16px; 
+    border-bottom: 1px solid #ddd;
     align-items: center;
 }
 
 .table-header {
-    background-color: #f7f7f7;
-    font-weight: bold;
-    border-top: 1px solid #ccc; /* Adds a line above the headers */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #f1f1f1; 
+  font-weight: bold;
+  border-top: 1px solid #ddd; 
 }
 
 .user-item:last-child {
     border-bottom: none;
 }
 
-.user-item p {
-    flex: 1;
-    padding: 0 10px;
+
+.user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px; 
+  border-bottom: 1px solid #ddd; 
+  position: relative; 
 }
 
 .delete-button {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-right: 60px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 16px; 
+  cursor: pointer;
+  border-radius: 20px;
+  position: absolute; 
+  right: 60px; 
+  top: 50%; 
+  transform: translateY(-50%); 
 }
 
 .delete-button:hover {
     background-color: #c0392b;
+}
+
+.user-item p {
+  flex: 1;
+  padding: 0 10px;
+  margin-left: 5px; 
 }
 
 /* UserDetails.css */
@@ -121,7 +138,11 @@
   }
   
   .search-input {
-    width: 50%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 2%; 
+    width: auto; 
   }
   
   .orders-list {
