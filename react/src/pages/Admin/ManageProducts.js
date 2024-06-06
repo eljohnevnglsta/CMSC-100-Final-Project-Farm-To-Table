@@ -32,17 +32,33 @@ export default function ProductManagement() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            withCredentials: true, credentials: 'include'
+            withCredentials: true, 
+            credentials: 'include'
         })
-            .then(response => response.json())
-            .then(body => {
-                setProducts(body);
-                setTotalProducts(body.length);
-            })
-            .catch(error => {
-                console.error('Error fetching products:', error);
-            });
+        .then(response => {
+            if (!response.ok) {
+                // Check if the response status is 401 (Unauthorized)
+                if (response.status === 401) {
+                    // Handle unauthorized access
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('type');
+                    window.location.href = '/login';
+                }
+                // Throw an error to be caught in the catch block
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            // If the response is ok, parse it as JSON
+            return response.json();
+        })
+        .then(body => {
+            setProducts(body);
+            setTotalProducts(body.length);
+        })
+        .catch(error => {
+            console.error('Error fetching products:', error);
+        });
     };
+    
 
     const inputChanges = (e) => {
         const { name, value } = e.target;
@@ -68,7 +84,21 @@ export default function ProductManagement() {
             },
             withCredentials: true, credentials: 'include'
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                // Check if the response status is 401 (Unauthorized)
+                if (response.status === 401) {
+                    // Handle unauthorized access
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('type');
+                    window.location.href = '/login';
+                }
+                // Throw an error to be caught in the catch block
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            // If the response is ok, parse it as JSON
+            return response.json();
+        })
         .then(body => {
             const customers = body.filter(user => user.userType === 'customer');
             setUsers(customers);
@@ -76,6 +106,11 @@ export default function ProductManagement() {
         })
         .catch(error => {
             console.error('Error fetching users:', error);
+            if (error.response.status === 401) {
+                localStorage.removeItem('user');
+                localStorage.removeItem('type');
+                window.location.href = '/login';
+            }
         });
     };
 
@@ -85,7 +120,7 @@ export default function ProductManagement() {
         if (response.data.deletedCount > 0) {
             fetchProducts();
         } else {
-            console.error('Failed to delete product');
+            console.error('Failed to delete product')
         }
         console.log(response.data);
     };
