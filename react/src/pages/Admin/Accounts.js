@@ -33,6 +33,8 @@ export default function UserManagement() {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
+      credentials: 'include'
     })
       .then(response => response.json())
       .then(body => {
@@ -53,6 +55,8 @@ export default function UserManagement() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email }),
+      withCredentials: true,
+      credentials: 'include'
     })
       .then(response => response.json())
       .then(result => {

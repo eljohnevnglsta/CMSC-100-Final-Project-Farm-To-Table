@@ -6,7 +6,8 @@ import '../../stylesheets/Admin/SalesReport.css';
 
 const showAllOrders = async () => {
     try {
-        const response = await axios.post('http://localhost:3001/show-all-orders');
+        const response = await axios.post('http://localhost:3001/show-all-orders', {}, {withCredentials: true,
+            credentials: 'include'});
         return response.data;
     } catch (error) {
         console.error('Error fetching orders:', error.message);
@@ -15,7 +16,8 @@ const showAllOrders = async () => {
 
 const GetAllProducts = async () => {
     try {
-        const response = await axios.post('http://localhost:3001/show-all-product');
+        const response = await axios.post('http://localhost:3001/show-all-product', {}, {withCredentials: true,
+            credentials: 'include'});
         return response.data;
     } catch (error) {
         console.error('Error fetching products:', error.message);

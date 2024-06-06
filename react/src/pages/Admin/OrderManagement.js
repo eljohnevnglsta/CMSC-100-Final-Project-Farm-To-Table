@@ -6,7 +6,8 @@ import OrderCard from '../../components/ordercard';
 
 const showAllOrders = async () => {
     try {
-        const response = await axios.post('http://localhost:3001/show-all-orders');
+        const response = await axios.post('http://localhost:3001/show-all-orders', {}, {withCredentials: true,
+            credentials: 'include'});
         return response.data;
     } catch (error) {
         console.error('Error fetching orders:', error.message);
@@ -60,7 +61,8 @@ function AdminApproval() {
 
     const handleApprove = async (transactionId) => {
         try {
-            const response = await axios.post("http://localhost:3001/approval", { transactionId: transactionId })
+            const response = await axios.post("http://localhost:3001/approval", { transactionId: transactionId }, {withCredentials: true,
+                credentials: 'include'})
             console.log(response.data);
             if (response.data.status === false) {
                 console.error(response.data.message);
@@ -78,7 +80,8 @@ function AdminApproval() {
 
     const handleCancel = async (transactionId) => {
         try {
-            const response = await axios.post("http://localhost:3001/disapproval", { transactionId: transactionId })
+            const response = await axios.post("http://localhost:3001/disapproval", { transactionId: transactionId }, {withCredentials: true,
+                credentials: 'include'})
 
             if (response.data.status === false) {
                 console.error(response.data.message);

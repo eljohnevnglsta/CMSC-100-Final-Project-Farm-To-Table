@@ -6,7 +6,8 @@ import axios from 'axios';
 
 const getProductDetails = async (id) => {
   try {
-    const response = await axios.post('http://localhost:3001/get-product-by-id', { productId: id });
+    const response = await axios.post('http://localhost:3001/get-product-by-id', { productId: id }, {withCredentials: true,
+      credentials: 'include'});
     return response.data;
   } catch (error) {
     console.error('Error fetching product:', error.message);
@@ -30,6 +31,8 @@ export default function UserDetails(props) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ email }),
+          withCredentials: true,
+          credentials: 'include'
         });
         const userData = await response.json();
         setUser(userData);
@@ -46,6 +49,8 @@ export default function UserDetails(props) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ email }),
+          withCredentials: true,
+          credentials: 'include'
         });
         const ordersData = await response.json();
         const sortedOrders = ordersData.sort((a, b) => new Date(b.dateOrdered) - new Date(a.dateOrdered));

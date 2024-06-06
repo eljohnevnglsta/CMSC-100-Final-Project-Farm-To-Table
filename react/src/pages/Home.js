@@ -9,7 +9,7 @@ const getProducts = async () => {
     const url = 'http://localhost:3001/show-all-product';
     var products = [];
     try {
-        const response = await axios.post(url);
+        const response = await axios.post(url,{}, {withCredentials: true, credentials: 'include'});
         products = response.data;
     } catch (error) {
         console.error('Error:', error);
@@ -32,7 +32,7 @@ export const getUserData = async (email) => {
 const saveCart = async (email, cart) => {
     const url = 'http://localhost:3001/update-cart';
     try {
-        const response = await axios.post(url, { email: email, shoppingCart: cart });
+        const response = await axios.post(url, { email: email, shoppingCart: cart }, {withCredentials: true, credentials: 'include'});
         console.log(response.data);
     } catch (error) {
         console.error('Error:', error);
@@ -42,7 +42,7 @@ const saveCart = async (email, cart) => {
 const checkout = async (email) => {
     const url = 'http://localhost:3001/checkout';
     try {
-        const response = await axios.post(url, { email: email });
+        const response = await axios.post(url, { email: email }, {withCredentials: true, credentials: 'include'});
         console.log(response.data);
     } catch (error) {
         console.error('Error:', error);

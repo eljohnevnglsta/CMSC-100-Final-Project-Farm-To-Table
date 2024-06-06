@@ -9,26 +9,26 @@ import { verifyToken } from "./actions/auth.js";
 
 const router = (app) => {
     // user 
-    app.post('/add-user', addUser);
+    app.post('/add-user',verifyToken, addUser);
     app.post('/get-user-by-email', getUserbyEmail)
-    app.post('/update-user', updateUserDetails);
-    app.post('/delete-user', deleteUser);
-    app.post('/show-all-user', showAllUser);
+    app.post('/update-user',verifyToken, updateUserDetails);
+    app.post('/delete-user',verifyToken, deleteUser);
+    app.post('/show-all-user',verifyToken, showAllUser);
 
     // product
-    app.post('/add-product', addNewProduct)
-    app.post('/get-product-by-id', getProductByID);
-    app.post('/update-product', updateProductDetails);
-    app.post('/delete-product', deleteProduct);
-    app.post('/show-all-product', showAllProducts);
+    app.post('/add-product',verifyToken, addNewProduct)
+    app.post('/get-product-by-id',verifyToken, getProductByID);
+    app.post('/update-product',verifyToken, updateProductDetails);
+    app.post('/delete-product',verifyToken, deleteProduct);
+    app.post('/show-all-product',verifyToken, showAllProducts);
 
     // order
-    app.post('/add-order', addOrder);
-    app.post('/get-order-by-transaction-id', getOrderByTransactionId);
-    app.post('/update-order', updateOrder);
-    app.post('/delete-order', deleteOrder);
-    app.post('/show-orders-of-user', showAllOrderFromAUser);
-    app.post('/show-all-orders', showAllOrders); 
+    app.post('/add-order',verifyToken, addOrder);
+    app.post('/get-order-by-transaction-id',verifyToken, getOrderByTransactionId);
+    app.post('/update-order',verifyToken, updateOrder);
+    app.post('/delete-order',verifyToken, deleteOrder);
+    app.post('/show-orders-of-user',verifyToken, showAllOrderFromAUser);
+    app.post('/show-all-orders',verifyToken, showAllOrders); 
 
     // authentication endpoints
     app.post('/signup', signup);
@@ -36,21 +36,21 @@ const router = (app) => {
     app.post('/logout', logout);
 
     // shopping endpoints 
-    app.post('/update-cart', updatedCartItems);
-    app.post('/checkout', checkout);
-    app.post('/cancel-order', cancelOrder);
+    app.post('/update-cart',verifyToken, updatedCartItems);
+    app.post('/checkout',verifyToken, checkout);
+    app.post('/cancel-order',verifyToken, cancelOrder);
 
     //admin endpoints
-    app.post('/approval', approval);
-    app.post('/disapproval', disapproval);
+    app.post('/approval',verifyToken, approval);
+    app.post('/disapproval',verifyToken, disapproval);
 
     // sold products
-    app.post('/get-sold-by-product-id', getSoldByProductId);
-    app.post('/show-all-sold', showAllSold);
-    app.post('/delete-sold', deleteSold);
-    app.post('/update-sold-details', updateSoldDetails);
-    app.post('/show-all-sold', showAllSold);
-    app.post('/show-all-sold', addSold);
+    app.post('/get-sold-by-product-id',verifyToken, getSoldByProductId);
+    app.post('/show-all-sold',verifyToken, showAllSold);
+    app.post('/delete-sold',verifyToken, deleteSold);
+    app.post('/update-sold-details',verifyToken, updateSoldDetails);
+    app.post('/show-all-sold',verifyToken, showAllSold);
+    app.post('/show-all-sold',verifyToken, addSold);
 
 }
 
