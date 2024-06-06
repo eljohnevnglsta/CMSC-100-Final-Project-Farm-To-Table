@@ -2,7 +2,7 @@ import Navbar from "../components/navbar"
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ProductCard from "../components/productcard";
-import CartItems from "../components/cartitems";    
+import CartItems from "../components/cartitems";
 import "../stylesheets/Home.css";
 
 const getProducts = async () => {
@@ -56,6 +56,7 @@ export default function Home(props) {
     const [initialCart, setInitialCart] = useState([]);
     const [userData, setUserData] = useState({});
     const [cart, setCart] = useState([]);
+    const [searchProduct, setSearchProduct] = useState("");
 
     useEffect(() => {
         async function fetchData() {
@@ -151,12 +152,25 @@ export default function Home(props) {
         handleSorting();
     }
 
+    const filteredProducts = filteredProductList.filter(product =>
+        product.productName.toLowerCase().includes(searchProduct.toLowerCase())
+    );
+
     return (
         <div id="home-root">
             <Navbar links={navElements} />
             <div className="home-body">
                 <div className="cardsHolder">
                     <div className="sort-options">
+                        <p>Search:</p>
+                        <div className="search-bar">
+                            <input
+                                type="text"
+                                placeholder="Search"
+                                value={searchProduct}
+                                onChange={e => setSearchProduct(e.target.value)}
+                            />
+                        </div>
                         <p>Name:</p>
                         <div className="button-group">
                             <select defaultValue="none" id="name" onChange={handleNameChange}>
@@ -182,7 +196,7 @@ export default function Home(props) {
                         <button id="home-show-all" onClick={handleSorting}>APPLY</button>
                     </div>
                     <div className="products">
-                        {filteredProductList.map((product) => (
+                        {filteredProducts.map((product) => (
                             <ProductCard key={product.productId} product={product} addToCart={addToCart} />
                         ))}
                     </div>
@@ -204,7 +218,7 @@ export default function Home(props) {
                     </div>
                     <button id="checkout-btn" onClick={() => { checkout(email); setCart([]); }}>Checkout</button>
                     <button id="save-cart" onClick={() => saveCart(email, cart)}>Save Current Cart</button>
-                </div>  
+                </div>
             </div>
         </div>
     );
