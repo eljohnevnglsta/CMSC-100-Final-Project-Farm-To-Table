@@ -44,7 +44,8 @@ const saveCart = async (email, cart) => {
     }
 }
 
-const checkout = async (email) => {
+const checkout = async (email, cart) => {
+    await saveCart(email, cart)
     const url = 'http://localhost:3001/checkout';
     try {
         const response = await axios.post(url, { email: email }, {withCredentials: true, credentials: 'include'});
@@ -217,7 +218,7 @@ export default function Home(props) {
                     <div className="total">
                         <h3>Total: ${cart.reduce((acc, item) => acc + item.productPrice * item.quantity, 0).toFixed(2)}</h3>
                     </div>
-                    <button id="checkout-btn" onClick={() => { checkout(email); setCart([]); }}>Checkout</button>
+                    <button id="checkout-btn" onClick={() => { checkout(email, cart); setCart([]); }}>Checkout</button>
                     <button id="save-cart" onClick={() => saveCart(email, cart)}>Save Current Cart</button>
                 </div>
             </div>
